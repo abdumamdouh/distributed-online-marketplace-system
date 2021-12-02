@@ -2,7 +2,7 @@
   "name": "distributed-online-marketplace-system",
   "version": "1.0.0",
   "description": "a distributed online marketplace system that rely on a distributed database model.",
-  "main": "server.js",
+  "main": "src/server.js",
   "scripts": {
     "client-install": "npm install --prefix client",
     "start": "node server.js",
