@@ -1,1 +1,0 @@
-console.log("ay 7aga")
