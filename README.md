@@ -2,10 +2,6 @@
 
 
 
-
-[![Build Status](https://img.shields.io/badge/C-90%25-green)](https://travis-ci.org/joemccann/dillinger) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[![Build Status](https://img.shields.io/badge/Python-10%25-green)](https://travis-ci.org/joemccann/dillinger) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[![Build Status](https://img.shields.io/badge/commit%20activity-3weeks-blue)](https://travis-ci.org/joemccann/dillinger) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![Build Status](https://img.shields.io/badge/contributors-6-green)
-<br />
-
 ## Table of Contents
 
 - Introduction
@@ -16,6 +12,9 @@
 
 ## Introduction
 a distributed online marketplace system that rely on a distributed database model.
+
+
+
 ## Quick Start
 
 Add your MONGO_URI to the default.json file. Make sure you set an env var for that and the jwtSecret on deployment
@@ -41,6 +40,18 @@ npm run client
 
 ## Technologies Used
 
+- ReactJS
+- React Hooks
+- Redux
+- react-router-dom
+- sass
+- axios
+- NodeJS
+- ExpressJS
+- MongoDB
+- Mongoose
+- Dotenv
+- Morgan
 
 ## Deployment
 
