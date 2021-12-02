@@ -1,0 +1,77 @@
+@import './assets/styles/_variables.scss';
+@import './assets/styles/_mixins.scss';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+* {
+  text-decoration: none;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+ul {
+  list-style: none;
+}
+
+.btn {
+  padding: 0.5rem 0.8rem;
+  text-transform: capitalize;
+  font-weight: 400;
+  letter-spacing: 1px;
+  font-family: inherit;
+  border: none;
+  outline: none;
+  border-radius: 0.2rem;
+  font-size: 0.7rem;
+  cursor: pointer;
+  display: inline-block;
+  background: $main-white;
+
+  @include atMdScreen {
+    font-size: 1rem;
+  }
+
+  @include atLgScreen {
+    padding: 0.8rem 1rem;
+  }
+}
+
+.btn-black {
+  background: $main-black;
+  color: $main-white;
+  box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.75);
+  transition: box-shadow 0.2s linear;
+
+  &:hover {
+    box-shadow: none;
+  }
+}
+
+.btn-grey {
+  color: $main-black;
+  background: $line-color;
+  border-radius: 4rem;
+  box-shadow: 0px 0px 13px 2px rgba(230, 230, 232, 1);
+  transition: box-shadow 0.2s linear;
+
+  &:hover {
+    box-shadow: none;
+  }
+}
+
+.btn-primary {
+  background: $primary-color;
+  color: $main-white;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+.section-bg {
+  background: $section-bg;
+}
