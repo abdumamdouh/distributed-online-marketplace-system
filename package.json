@@ -1,0 +1,30 @@
+{
+  "name": "distributed-online-marketplace-system",
+  "version": "1.0.0",
+  "description": "a distributed online marketplace system that rely on a distributed database model.",
+  "main": "server.js",
+  "scripts": {
+    "client-install": "npm install --prefix client",
+    "start": "node server.js",
+    "server": "nodemon server.js --exec babel-node --presets babel-preset-env",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abdumamdouh/distributed-online-marketplace-system.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/abdumamdouh/distributed-online-marketplace-system/issues"
+  },
+  "homepage": "https://github.com/abdumamdouh/distributed-online-marketplace-system#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.2.3",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.15"
+  }
+}
