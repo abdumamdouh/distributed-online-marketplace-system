@@ -14,7 +14,7 @@ router.post('/products', (req, res)=> {
 router.get('/products', (req, res) => {
     Product.find({}).then( (products)=> {
         if( !products ) {
-            res.status(404).send()
+            return res.status(404).send()
         }
         res.status(200).send(products)
     }).catch( (e)=> {
@@ -26,7 +26,7 @@ router.get('/products/:id', (req, res) => {
     const _id = req.params.id
     Product.findById(_id).then( (product) => {
         if( !product ) {
-            res.status(404).send()
+            return res.status(404).send()
         } 
         res.status(200).send(product)
     }).catch( (e) => {
