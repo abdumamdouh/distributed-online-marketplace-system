@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import Stars from '../../Stars/Stars';
 
 import { formatPrice } from '../../../utils/formatPrice';
-import { addToCart } from '../../../redux/products/products_actions';
+import { addToCart } from '../../../redux/actions/products';
 
 import './SingleProductInfo.scss';
 

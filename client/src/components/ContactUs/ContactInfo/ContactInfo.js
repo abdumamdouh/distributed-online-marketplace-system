@@ -7,15 +7,15 @@ const ContactInfo = () => {
         className="contact-info__title
       contact-info__title--main mb-5"
       >
-        Contact Us
+       Info
       </h4>
-      <h4 className="contact-info__title mb-2">HEADQUARTERS</h4>
+      <h4 className="contact-info__title mb-2">Name</h4>
       <p className="contact-info__text mb-4">
         1600 Amphitheatre Parkway New York
       </p>
       <h4 className="contact-info__title mb-2">PHONE</h4>
       <p className="contact-info__text mb-4">1.800.458.556</p>
-      <h4 className="contact-info__title mb-2">support</h4>
+      <h4 className="contact-info__title mb-2">E-mail</h4>
       <p className="contact-info__text mb-4">
         support@your-domain.com
         <br />

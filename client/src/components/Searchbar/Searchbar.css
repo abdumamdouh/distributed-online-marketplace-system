@@ -1,0 +1,11 @@
+.searchbar {
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-right:5px;
+    width: 1519px;
+    height: 40px;
+    padding-left:10px;
+    font-size: 20px;
+  }

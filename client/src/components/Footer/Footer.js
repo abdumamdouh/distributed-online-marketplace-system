@@ -21,27 +21,6 @@ const Footer = () => {
             />
           </div>
           <div className="col-10 col-lg-5 mx-auto">
-            <h5 className="site-footer__title">SUBSCRIBE TO OUR NEWSLETTER</h5>
-            <p className="site-footer__text">
-              Get all the latest information on Events, Sales and Offers.
-            </p>
-          </div>
-          <div className="col-10 col-lg-5 mx-auto">
-            <form
-              onSubmit={(e) => e.preventDefault()}
-              className="site-footer__form"
-            >
-              <input
-                type="email"
-                className="site-footer__input"
-                placeholder="your email..."
-              />
-              <input
-                type="submit"
-                className="site-footer__btn"
-                value="subscribe"
-              />
-            </form>
           </div>
         </div>
         {/* footer content */}
@@ -89,7 +68,7 @@ const Footer = () => {
           {/* copy rights */}
           <div className="col-10 col-lg-4 mx-auto">
             <span className="site-footer__rights">
-              <span className="site-footer__rights--author">Ibrahim Kamal</span>{' '}
+              <span className="site-footer__rights--author"></span>{' '}
               &copy; {new Date().getFullYear()}. All Rights Reserved
             </span>
           </div>

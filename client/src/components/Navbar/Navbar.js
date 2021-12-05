@@ -14,7 +14,7 @@ import logo from '../../assets/images/hogash-logo-black.png';
 import {
   toggleSideCart,
   toggleSidebar,
-} from '../../redux/sidebar/sidebar_actions';
+} from '../../redux/actions/sideBar';
 
 // navbar styles
 import './Navbar.scss';
@@ -70,7 +70,7 @@ const Navbar = () => {
           <div className="site-header__icons">
             <ul className="site-header__icons-list">
               <li className="site-header__icons-item">
-                <Link style={{ color: '#000' }} to="/contact">
+                <Link style={{ color: '#000' }} to="/account">
                   <BiUser className="site-header__icon" />
                 </Link>
               </li>

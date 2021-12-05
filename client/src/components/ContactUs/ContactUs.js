@@ -12,7 +12,7 @@ const ContactUs = () => {
   return (
     <section className="py-5">
       <div className="container">
-        <Title title="CONTACT US" />
+        <Title title="Profile" />
         <div className="row">
           <div className="col-10 col-md-3 mx-auto">
             <ContactInfo />

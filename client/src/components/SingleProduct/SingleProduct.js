@@ -58,13 +58,13 @@ const SingleProduct = ({ singleProduct }) => {
           </div>
         </div>
       </section>
-      <Hero
+      {/* <Hero
         subtitleHeading="extra"
         subtitleFooter="online"
         offer="30% off"
         title="lifestyle collection"
         text="free shipping on orders over $99"
-      />
+      /> */}
       <ClientSlider />
     </>
   );

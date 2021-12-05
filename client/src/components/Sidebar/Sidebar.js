@@ -6,7 +6,7 @@ import SocialIcons from '../SocialIcons/SocialIcons';
 import { navbarLinks } from '../../utils/navbarLinks';
 import welcome from '../../assets/images/welcome.png';
 
-import { closeSidebar } from '../../redux/sidebar/sidebar_actions';
+import { closeSidebar } from '../../redux/actions/sideBar';
 
 import './Sidebar.scss';
 

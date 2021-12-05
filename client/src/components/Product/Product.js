@@ -5,7 +5,7 @@ import { AiOutlineShopping } from 'react-icons/ai';
 import { formatPrice } from '../../utils/formatPrice';
 import Stars from '../Stars/Stars';
 
-import { addToCart } from '../../redux/products/products_actions';
+import { addToCart } from '../../redux/actions/products';
 
 import './Product.scss';
 
