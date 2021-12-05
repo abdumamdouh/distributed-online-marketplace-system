@@ -1,10 +1,10 @@
-import { combineReducers } from 'redux';
+
+import { combineReducers } from "redux";
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
-import productsReducer from './reducers/products';
-import sidebarReducer from './reducers/sideBar';
-
+import productsReducer from "./products";
+import sidebarReducer from "./sideBar";
 
 
 const persistConfig = {
@@ -14,8 +14,8 @@ const persistConfig = {
 };
 
 const rootReducer = combineReducers({
-  products: productsReducer,
-  sidebar: sidebarReducer,
+  productsReducer,
+  sidebarReducer,
 });
 
 export default persistReducer(persistConfig, rootReducer);

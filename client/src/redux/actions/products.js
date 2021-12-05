@@ -5,7 +5,7 @@ import {
   ADD_TO_CART,
   REMOVE_FROM_CART,
   FETCH_SINGLE_PRODUCT,
-} from './products_types';
+} from '../types';
 
 const URL = 'https://600c30e638fd25001702cf7e.mockapi.io/api/v1/products';
 
