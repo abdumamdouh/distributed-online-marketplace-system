@@ -1,8 +1,8 @@
 const mongoose = require('mongoose')
 const validator = require('validator')
 
-
-const User = mongoose.model('User', {
+// defining user Schema 
+const userSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
@@ -30,14 +30,25 @@ const User = mongoose.model('User', {
             }
         }
     },
-    age: {
-        type: Number,
-        default: 0,
-        validate(value) {
-            if( value < 0) {
-                throw new Error('Age must be a positive number')
-            }
+    balance: {
+        type:Number ,
+        default: 100, 
+    } ,
+    inventory:[] ,
+    purchasedItems:[] ,
+    tokens:[{
+        token:{
+            type: String,
+            required: true
         }
-    }
+    }]
 })
+
+
+
+// creating user model 
+const User = mongoose.model('User',userSchema)
+
+
 module.exports = User
+
