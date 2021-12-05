@@ -1,0 +1,25 @@
+.category {
+  position: relative;
+  overflow: hidden;
+
+  &:hover &__btn {
+    bottom: 5%;
+    opacity: 1;
+  }
+
+  &__image {
+    width: 100%;
+    display: block;
+  }
+
+  &__btn {
+    position: absolute;
+    bottom: -10%;
+    left: 5%;
+    width: 90%;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    opacity: 0;
+    transition: all 0.3s linear;
+  }
+}
