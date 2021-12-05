@@ -1,6 +1,5 @@
 const mongoose = require('mongoose')
-const validator = require('validator')
-
+require('mongoose-type-url');
 
 // defining product Schema
 const productSchema = new mongoose.Schema({
@@ -23,14 +22,6 @@ const productSchema = new mongoose.Schema({
             }
         }
     },
-    Oldprice:{
-        type: Number,
-        validate (value) {
-            if (value < 0) {
-                throw new Error ('Price must be positive value.')
-            }
-        }
-    } ,
     brand:{
         type: String
     },
@@ -42,7 +33,6 @@ const productSchema = new mongoose.Schema({
     },
     image: {
         type: mongoose.SchemaTypes.Url,
-        required: true
     },
     gallarey: [{
         sku:{
@@ -57,11 +47,12 @@ const productSchema = new mongoose.Schema({
     },
     description:{
         type: String,
-        required: true
     }
+} , {
+    timestamps: true
 })
 
 // creating product model
-const Product = mongoose.model(productSchema)
+const Product = mongoose.model('Product',productSchema)
 
 module.exports = Product
