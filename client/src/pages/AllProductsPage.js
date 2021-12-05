@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { fetchProducts } from '../redux/products/products_actions';
+import { fetchProducts } from '../redux/actions/products';
 
 import Banner from '../components/Banner/Banner';
 import AllProducts from '../components/AllProducts/AllProducts';
 import ClientSlider from '../components/ClientSlider/ClientSlider';
-
+import Searchbar from '../components/Searchbar/Searchbar'
 import productsBanner from '../assets/images/products-banner.jpg';
 
 const AllProductsPage = () => {
@@ -19,7 +19,9 @@ const AllProductsPage = () => {
 
   return (
     <>
+    <Searchbar style={{width: '100%'}}/>
       <Banner image={productsBanner} />
+      
       <AllProducts products={products} />
       <ClientSlider />
     </>

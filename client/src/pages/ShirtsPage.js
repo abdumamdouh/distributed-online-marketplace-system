@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { fetchProducts } from '../redux/products/products_actions';
+import { fetchProducts } from '../redux/actions/products';
 
 import Product from '../components/Product/Product';
 import Banner from '../components/Banner/Banner';

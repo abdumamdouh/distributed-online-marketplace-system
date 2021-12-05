@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 
 import SingleProduct from '../components/SingleProduct/SingleProduct';
 
-import { fetchSingleProduct } from '../redux/products/products_actions';
+import { fetchSingleProduct } from '../redux/actions/products';
 
 const SingleProductPage = () => {
   const { singleProduct } = useSelector((state) => state.products);

@@ -11,13 +11,6 @@ const AboutPage = () => {
       <Banner image={aboutBanner} />
       <AboutInfo />
       <Reviews />
-      <Hero
-        subtitleHeading="extra"
-        subtitleFooter="online"
-        offer="30% off"
-        title="lifestyle collection"
-        text="free shipping on orders over $99"
-      />
     </>
   );
 };

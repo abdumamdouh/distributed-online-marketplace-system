@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { fetchProducts } from '../redux/products/products_actions';
+import { fetchProducts } from '../redux/actions/products';
 
 import MainBanner from '../components/MainBanner/MainBanner';
 import Categories from '../components/Categories/Categories';
@@ -29,13 +29,13 @@ const HomePage = () => {
       <MainBanner />
       <Categories />
       <BestProducts bestProducts={bestProducts} />
-      <Hero
+      {/* <Hero
         subtitleHeading="extra"
         subtitleFooter="online"
         offer="30% off"
         title="lifestyle collection"
         text="free shipping on orders over $99"
-      />
+      /> */}
       <FeaturedProducts featuredProducts={featuredProducts} />
       <ClientSlider />
     </>
