@@ -12,6 +12,7 @@ import {
   AllProducts,
   SingleProduct,
   Error,
+  Login,
 } from './pages';
 
 // components
@@ -33,6 +34,9 @@ const App = () => {
       <Switch>
         <Route exact path="/">
           <Home />
+        </Route>
+        <Route exact path="/login">
+          <Login />
         </Route>
         <Route exact path="/shirts">
           <Shirts />
