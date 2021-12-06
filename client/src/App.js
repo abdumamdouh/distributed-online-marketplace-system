@@ -29,6 +29,9 @@ import Footer from "./components/Footer/Footer";
 // scroll to top component
 import ScrollToTop from "./utils/ScrollToTop";
 
+// protected route
+import ProtectedRoute from "./ProtectedRoute";
+
 const App = () => {
   return (
     <Router>
@@ -37,26 +40,46 @@ const App = () => {
       <CartSidebar />
       <Sidebar />
       <Switch>
-        <Route exact path="/" component={Home} name="Home Page" />
+        <ProtectedRoute exact path="/" component={Home} name="Home Page" />
         <Route exact path="/login" component={Login} name="Login Page" />
-        <Route exact path="/shirts" component={Shirts} name="Shirts Page" />
-        <Route exact path="/shoes" component={Shoes} name="Shoes Page" />
-        <Route
+        <ProtectedRoute
+          exact
+          path="/shirts"
+          component={Shirts}
+          name="Shirts Page"
+        />
+        <ProtectedRoute
+          exact
+          path="/shoes"
+          component={Shoes}
+          name="Shoes Page"
+        />
+        <ProtectedRoute
           exact
           path="/headphones"
           component={HeadPhones}
           name="HeadPhones Page"
         />
-        <Route exact path="/about" component={About} name="About Page" />
-        <Route exact path="/account" component={Contact} name="Contact Page" />
-        <Route exact path="/cart" component={Cart} name="Cart Page" />
-        <Route
+        <ProtectedRoute
+          exact
+          path="/about"
+          component={About}
+          name="About Page"
+        />
+        <ProtectedRoute
+          exact
+          path="/account"
+          component={Contact}
+          name="Contact Page"
+        />
+        <ProtectedRoute exact path="/cart" component={Cart} name="Cart Page" />
+        <ProtectedRoute
           exact
           path="/products"
           component={AllProducts}
           name="AllProducts Page"
         />
-        <Route
+        <ProtectedRoute
           exact
           path="/products/:id"
           component={SingleProduct}
