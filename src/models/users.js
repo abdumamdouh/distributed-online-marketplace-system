@@ -1,8 +1,8 @@
 const mongoose = require('mongoose')
 const validator = require('validator')
+const Product = require('../models/products')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
-require('mongoose-type-url');
 
 // defining user Schema 
 const userSchema = new mongoose.Schema({
@@ -48,15 +48,6 @@ const userSchema = new mongoose.Schema({
 } , {
 
     timestamps: true
-})
-
-
-// virtual tasks property that will hold the tasks created by each user
-// it's the same as joining two tables to get all tasks created by a user
-userSchema.virtual('tasks' , {
-    ref: 'Task',
-    localField: '_id',
-    foreignField: 'creator'
 })
 
 // generating an auth token to each individual user
@@ -107,11 +98,13 @@ userSchema.pre('save' , async function (next) {
 })
 
 // Delete all user products when user is removed
-// userSchema.pre('remove' , async function (next) {
-//     const user = this 
-//     await Task.deleteMany({creator: user._id})
-//     next()
-// })
+userSchema.pre('remove' , function (next) {
+    const user = this 
+    user.inventory.forEach(async (elem) =>{
+        await Product.findOneAndDelete({_id:elem._id})
+    })
+    next()
+})
 
 // creating user model 
 const User = mongoose.model('User',userSchema)
