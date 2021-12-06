@@ -12,12 +12,14 @@ import { navbarLinks } from "../../utils/navbarLinks";
 import logo from "../../assets/images/hogash-logo-black.png";
 
 import { toggleSideCart, toggleSidebar } from "../../redux/actions/sideBar";
+import { logoutUserAction } from "../../redux/actions/users";
 
 // navbar styles
 import "./Navbar.scss";
 
 const Navbar = () => {
   const { cart } = useSelector((state) => state.products);
+
   const dispatch = useDispatch();
   const [cartCount, setCartCount] = useState(0);
 
@@ -33,6 +35,7 @@ const Navbar = () => {
   const handleLogOut = () => {
     console.log("log out");
     //TODO dispatch the action to logout
+    dispatch(logoutUserAction());
   };
 
   return (
