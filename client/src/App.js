@@ -16,8 +16,8 @@ import {
   Cart,
   AllProducts,
   SingleProduct,
-  Error,
-  Login
+  Login,
+  PageNotFound404
 } from "./pages";
 
 // components
@@ -65,7 +65,12 @@ const App = () => {
 
         {/* <Route exact path="/products/:id" children={<SingleProduct />} /> */}
 
-        <Route exact path="/404" component={Error} name="Error Page" />
+        <Route
+          exact
+          path="/404"
+          component={PageNotFound404}
+          name="Error Page"
+        />
         <Redirect to="/404" />
       </Switch>
       <Footer />
