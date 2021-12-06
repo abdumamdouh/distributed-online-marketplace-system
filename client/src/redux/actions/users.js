@@ -53,13 +53,11 @@ const loginUserAction = (email, password) => {
 };
 
 //Log out
-const logoutUserAction = () => async dispatch =>{
-    try{
-        
-        dispatch({ type: LOGOUT})
-    }
-    catch(error){
-
+const logoutUserAction = ()=>{
+    return{
+        type: LOGOUT,
     }
 }
+    
+
 export {registerUserAction, loginUserAction, logoutUserAction}
