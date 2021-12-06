@@ -81,6 +81,11 @@ const Navbar = () => {
                 />
                 <span className="site-header__cart-count">{cartCount}</span>
               </li>
+              <li>
+              <Link to="/login" className="site-header__link">
+                      Login
+                </Link>
+              </li>
               <li className="site-header__icons-item">
                 <FaBars
                   className="site-header__toggle"
