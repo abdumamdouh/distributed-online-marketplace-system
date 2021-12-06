@@ -1,23 +1,20 @@
-import { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { BiUser } from 'react-icons/bi';
-import { CgShoppingBag } from 'react-icons/cg';
-import { FaBars } from 'react-icons/fa';
+import { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+import { BiUser } from "react-icons/bi";
+import { CgShoppingBag } from "react-icons/cg";
+import { FaBars } from "react-icons/fa";
 
 // import navbar links from utils
-import { navbarLinks } from '../../utils/navbarLinks';
+import { navbarLinks } from "../../utils/navbarLinks";
 
 // import logo from assets
-import logo from '../../assets/images/hogash-logo-black.png';
+import logo from "../../assets/images/hogash-logo-black.png";
 
-import {
-  toggleSideCart,
-  toggleSidebar,
-} from '../../redux/actions/sideBar';
+import { toggleSideCart, toggleSidebar } from "../../redux/actions/sideBar";
 
 // navbar styles
-import './Navbar.scss';
+import "./Navbar.scss";
 
 const Navbar = () => {
   const { cart } = useSelector((state) => state.products);
@@ -32,6 +29,11 @@ const Navbar = () => {
 
     setCartCount(count);
   }, [cart, cartCount]);
+
+  const handleLogOut = () => {
+    console.log("log out");
+    //TODO dispatch the action to logout
+  };
 
   return (
     <header className="site-header">
@@ -70,20 +72,25 @@ const Navbar = () => {
           <div className="site-header__icons">
             <ul className="site-header__icons-list">
               <li className="site-header__icons-item">
-                <Link style={{ color: '#000' }} to="/account">
+                <Link style={{ color: "#000" }} to="/account">
                   <BiUser className="site-header__icon" />
                 </Link>
               </li>
               <li className="site-header__icons-item">
                 <CgShoppingBag
                   onClick={() => dispatch(toggleSideCart())}
-                  style={{ cursor: 'pointer' }}
+                  style={{ cursor: "pointer" }}
                 />
                 <span className="site-header__cart-count">{cartCount}</span>
               </li>
               <li>
-              <Link to="/login" className="site-header__link">
-                      Login
+                <Link to="/login" className="site-header__link">
+                  Login
+                </Link>
+              </li>
+              <li>
+                <Link to="/login" className="site-header__link">
+                  <span onClick={handleLogOut}>Logout</span>
                 </Link>
               </li>
               <li className="site-header__icons-item">
