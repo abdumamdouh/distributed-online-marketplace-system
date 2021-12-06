@@ -27,3 +27,4 @@ yarn-error.log*
 package-lock.json
 .env
 config.env
+client/.eslintcache
