@@ -4,7 +4,7 @@ import storage from 'redux-persist/lib/storage';
 
 import productsReducer from './reducers/products';
 import sidebarReducer from './reducers/sideBar';
-
+import userReducer from './reducers/users'
 
 
 const persistConfig = {
@@ -16,6 +16,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
   products: productsReducer,
   sidebar: sidebarReducer,
+  users: userReducer,
 });
 
 export default persistReducer(persistConfig, rootReducer);
