@@ -1,38 +1,64 @@
 const express = require('express')
 const Product = require('../models/products')
+const auth = require('../middleware/auth')
+
+
 const  router = new express.Router()
 
-router.post('/products', (req, res)=> {
-    const product = new Product(req.body)
-    product.save().then( ()=>{
-        res.status(201).send(product)
-    }).catch( (e)=>{
-        res.status(400).send(e)
-    })
+//(Private) Get all products
+router.get('/products', auth , async (req,res) =>{
+    try{
+        const products = await Product.find({})
+        res.send(products)
+    } catch (error) {
+        res.status(400).send(error.message)
+    }
+}) 
+
+//(Private) Creating new product and adding Product to your inventory
+router.post('/products/addItem' , auth , async (req,res) => {
+    try{
+        const product = new Product(req.body)
+        await product.save()
+
+        req.user.inventory = req.user.inventory.concat(product)
+        await req.user.save()
+        res.send({user:req.user,product})
+    } catch(error) {
+        res.status(400).send()
+    }
 })
 
-router.get('/products', (req, res) => {
-    Product.find({}).then( (products)=> {
-        if( !products ) {
-            res.status(404).send()
+//(Private) purchasing a product
+router.post('/products/purchaseItem/:id' , auth , async (req,res) => {
+    try{
+        const _id =req.params.id
+        const product = await Product.findOne({_id})
+        if (req.user.balance > product.price){
+            req.user.balance -= product.price
+            req.user.purchasedItems = req.user.purchasedItems.concat(product)
+            await req.user.save()
+            res.status(200).send(req.user)
+        } else {
+            throw new Error("Insufficient balance.")
         }
-        res.status(200).send(products)
-    }).catch( (e)=> {
-        res.status(500).send()
-    })
+    } catch(error) {
+        res.status(400).send(error.message)
+    }
 })
 
-router.get('/products/:id', (req, res) => {
-    const _id = req.params.id
-    Product.findById(_id).then( (product) => {
-        if( !product ) {
-            res.status(404).send()
-        } 
-        res.status(200).send(product)
-    }).catch( (e) => {
-        res.status(500).send()
-    })
+//(Private) delete a product  
+router.delete('/products/deleteItem/:id' , auth ,async  (req,res)=>{
+    try{
+        await Product.deleteOne({_id : req.params.id})
+        req.user.inventory = req.user.inventory.filter((elem) =>{
+            return elem._id.toString() !== req.params.id
+        })
+        await req.user.save()
+        res.status(200).send(req.user)
+    } catch (error){
+        res.status(404).send(error.message)
+    }
 })
-
 
 module.exports = router
