@@ -47,7 +47,7 @@ const App = () => {
         <Route exact path="/headphones">
           <HeadPhones />
         </Route>
-        <Route exact path="/about">
+        <Route exact path="/reports">
           <About />
         </Route>
         <Route exact path="/account">

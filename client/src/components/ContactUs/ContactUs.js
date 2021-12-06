@@ -22,7 +22,7 @@ const ContactUs = () => {
           </div>
         </div>
         <div className="pt-5 pb-4">
-          <Title title="OUR STORES" />
+          <Title title="Products" />
         </div>
         <div className="row">
           <div className="col-10 col-md-3 mx-auto">

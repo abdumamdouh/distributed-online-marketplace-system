@@ -13,7 +13,7 @@ const ContactInfo = () => {
       <p className="contact-info__text mb-4">
         1600 Amphitheatre Parkway New York
       </p>
-      <h4 className="contact-info__title mb-2">PHONE</h4>
+      <h4 className="contact-info__title mb-2">cach balance</h4>
       <p className="contact-info__text mb-4">1.800.458.556</p>
       <h4 className="contact-info__title mb-2">E-mail</h4>
       <p className="contact-info__text mb-4">

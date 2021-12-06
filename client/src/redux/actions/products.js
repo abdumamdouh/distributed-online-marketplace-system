@@ -5,6 +5,9 @@ import {
   ADD_TO_CART,
   REMOVE_FROM_CART,
   FETCH_SINGLE_PRODUCT,
+  ADD_PRODUCT,
+  ADD_PRODUCT_SUCCESS,
+  ADD_PRODUCT_FAIL,
 } from '../types';
 
 const URL = 'https://600c30e638fd25001702cf7e.mockapi.io/api/v1/products';
@@ -46,3 +49,19 @@ export const fetchSingleProduct = (id) => {
     }
   };
 };
+
+//Add products to the inventory 
+export const addProductAction = (productInfo) =>{
+  return async (dispatch) => {
+    try {
+        dispatch({ type: ADD_PRODUCT})
+        const config ={
+          'Content-Type' : 'application/json'
+        }
+        const {data} = await axios.post('/api/products/addItem', productInfo, config);
+        dispatch({ type: ADD_PRODUCT_SUCCESS, payload: data })
+    } catch (error) {
+      dispatch({ type: ADD_PRODUCT_FAIL, payload: error.response&&error.response.data.message })
+    }
+  }
+}
