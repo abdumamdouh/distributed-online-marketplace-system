@@ -52,33 +52,6 @@ router.post('/users/logout-all' , auth , async (req,res) =>{
     }
 })
 
-//(Private) Purchase item
-router.post('/users/purchaseItem' , auth , async (req,res) => {
-    try{
-        if (req.user.balance > req.body.price){
-            req.user.balance -= req.body.price
-            req.user.purchasedItems = req.user.purchasedItems.concat(req.body)
-            await req.user.save()
-            res.status(200).send(req.user)
-        } else {
-            throw new Error("Insufficient balance.")
-        }
-    } catch(error) {
-        res.status(400).send(error.message)
-    }
-})
-
-//(Private) Add item to your inventory
-router.post('/users/addItem' , auth , async (req,res) => {
-    try{
-        req.user.inventory = req.user.inventory.concat(req.body)
-        await req.user.save()
-        res.send(req.user)
-    } catch(error) {
-        res.status(400).send()
-    }
-})
-
 //(Private) reading my profile 
 router.get('/users/me', auth , async (req,res) => {
     res.status(200).send(req.user.getPublicUser())
