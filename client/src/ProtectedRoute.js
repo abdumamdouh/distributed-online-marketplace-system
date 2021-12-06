@@ -4,7 +4,7 @@ import { Redirect, Route } from "react-router";
 import { useSelector } from "react-redux";
 
 const ProtectedRoute = ({ component: Component, exact, path }) => {
-  const { userInfo } = useSelector((state) => state.users);
+  const { userInfo } = useSelector((state) => state.user);
 
   return (
     <Route

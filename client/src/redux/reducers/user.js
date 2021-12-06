@@ -8,7 +8,7 @@ import {
   LOGOUT
 } from "../types";
 
-const userReducer = (state = null, action) => {
+const userReducer = (state = {}, action) => {
   switch (action.type) {
     case REGISTER_REQUEST:
       return {
@@ -37,7 +37,7 @@ const userReducer = (state = null, action) => {
         error: action.payload
       };
     case LOGOUT:
-      return null;
+      return {};
     default:
       return state;
   }
