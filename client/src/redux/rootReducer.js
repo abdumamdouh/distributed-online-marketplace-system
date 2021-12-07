@@ -1,22 +1,21 @@
-import { combineReducers } from 'redux';
-import { persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
+import { combineReducers } from "redux";
+import { persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage";
 
-import productsReducer from './reducers/products';
-import sidebarReducer from './reducers/sideBar';
-import userReducer from './reducers/users'
-
+import productsReducer from "./reducers/products";
+import sidebarReducer from "./reducers/sideBar";
+import userReducer from "./reducers/user";
 
 const persistConfig = {
-  key: 'root',
+  key: "root",
   storage,
-  blacklist: ['sidebar'],
+  blacklist: ["sidebar"]
 };
 
 const rootReducer = combineReducers({
   products: productsReducer,
   sidebar: sidebarReducer,
-  users: userReducer,
+  user: userReducer
 });
 
 export default persistReducer(persistConfig, rootReducer);

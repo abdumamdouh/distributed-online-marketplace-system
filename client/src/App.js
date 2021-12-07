@@ -1,4 +1,9 @@
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect
+} from "react-router-dom";
 
 // pages
 import {
@@ -11,18 +16,21 @@ import {
   Cart,
   AllProducts,
   SingleProduct,
-  Error,
   Login,
-} from './pages';
+  PageNotFound404
+} from "./pages";
 
 // components
-import Navbar from './components/Navbar/Navbar';
-import CartSidebar from './components/CartSidebar/CartSidebar';
-import Sidebar from './components/Sidebar/Sidebar';
-import Footer from './components/Footer/Footer';
+import Navbar from "./components/Navbar/Navbar";
+import CartSidebar from "./components/CartSidebar/CartSidebar";
+import Sidebar from "./components/Sidebar/Sidebar";
+import Footer from "./components/Footer/Footer";
 
 // scroll to top component
-import ScrollToTop from './utils/ScrollToTop';
+import ScrollToTop from "./utils/ScrollToTop";
+
+// protected route
+import ProtectedRoute from "./ProtectedRoute";
 
 const App = () => {
   return (
@@ -32,37 +40,61 @@ const App = () => {
       <CartSidebar />
       <Sidebar />
       <Switch>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Route exact path="/login">
-          <Login />
-        </Route>
-        <Route exact path="/shirts">
-          <Shirts />
-        </Route>
-        <Route exact path="/shoes">
-          <Shoes />
-        </Route>
-        <Route exact path="/headphones">
-          <HeadPhones />
-        </Route>
-        <Route exact path="/reports">
-          <About />
-        </Route>
-        <Route exact path="/account">
-          <Contact />
-        </Route>
-        <Route exact path="/cart">
-          <Cart />
-        </Route>
-        <Route exact path="/products">
-          <AllProducts />
-        </Route>
-        <Route exact path="/products/:id" children={<SingleProduct />} />
-        <Route path="*">
-          <Error />
-        </Route>
+        <ProtectedRoute exact path="/" component={Home} name="Home Page" />
+        <Route exact path="/login" component={Login} name="Login Page" />
+        <ProtectedRoute
+          exact
+          path="/shirts"
+          component={Shirts}
+          name="Shirts Page"
+        />
+        <ProtectedRoute
+          exact
+          path="/shoes"
+          component={Shoes}
+          name="Shoes Page"
+        />
+        <ProtectedRoute
+          exact
+          path="/headphones"
+          component={HeadPhones}
+          name="HeadPhones Page"
+        />
+        <ProtectedRoute
+          exact
+          path="/about"
+          component={About}
+          name="About Page"
+        />
+        <ProtectedRoute
+          exact
+          path="/account"
+          component={Contact}
+          name="Contact Page"
+        />
+        <ProtectedRoute exact path="/cart" component={Cart} name="Cart Page" />
+        <ProtectedRoute
+          exact
+          path="/products"
+          component={AllProducts}
+          name="AllProducts Page"
+        />
+        <ProtectedRoute
+          exact
+          path="/products/:id"
+          component={SingleProduct}
+          name="SingleProduct Page"
+        />
+
+        {/* <Route exact path="/products/:id" children={<SingleProduct />} /> */}
+
+        <Route
+          exact
+          path="/404"
+          component={PageNotFound404}
+          name="Error Page"
+        />
+        <Redirect to="/404" />
       </Switch>
       <Footer />
     </Router>
