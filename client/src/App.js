@@ -62,7 +62,7 @@ const App = () => {
         />
         <ProtectedRoute
           exact
-          path="/about"
+          path="/reports"
           component={About}
           name="About Page"
         />
