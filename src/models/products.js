@@ -3,6 +3,9 @@ require('mongoose-type-url');
 
 // defining product Schema
 const productSchema = new mongoose.Schema({
+    seller: {
+        type: String
+    },
     name: {
         type: String,
         required: true,
