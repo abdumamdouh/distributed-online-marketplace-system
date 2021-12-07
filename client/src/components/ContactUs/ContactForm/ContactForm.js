@@ -26,11 +26,13 @@ const ContactForm = () => {
             className="contact-form__input-field"
             type="text"
             placeholder="Name"
+            onchange = {(e) => setName(e.target.value)}
           />
           <input
             className="contact-form__input-field"
             type="text"
             placeholder="Price"
+            onchange={(e) => setPrice(e.target.value)}
           />
         </div>
         <div className="contact-form__message mt-4">
@@ -38,6 +40,7 @@ const ContactForm = () => {
             className="contact-form__input-field"
             type="text"
             placeholder="title"
+            onchange={(e) => settitle(e.target.value)}
           />
         </div>
         <div className="contact-form__message mt-4">
@@ -45,6 +48,7 @@ const ContactForm = () => {
             rows="10"
             className="contact-form__message"
             placeholder="description"
+            onchange={(e)=> setDescription(e.target.value)}
           ></textarea>
         </div>
         <button type="submit" className="btn">
