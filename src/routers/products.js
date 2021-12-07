@@ -1,5 +1,6 @@
 const express = require('express')
 const Product = require('../models/products')
+const User = require('../models/users')
 const auth = require('../middleware/auth')
 
 
@@ -15,10 +16,21 @@ router.get('/products', auth , async (req,res) =>{
     }
 }) 
 
+//(Private) Get product by it's id
+router.get('/products/:id', auth , async (req,res) =>{
+    try{
+        const product = await Product.findById(req.params.id)
+        res.send(product)
+    } catch (error) {
+        res.status(400).send(error.message)
+    }
+}) 
+
 //(Private) Creating new product and adding Product to your inventory
 router.post('/products/addItem' , auth , async (req,res) => {
     try{
         const product = new Product(req.body)
+        product.seller = req.user.name
         await product.save()
 
         req.user.inventory = req.user.inventory.concat(product)
@@ -32,15 +44,19 @@ router.post('/products/addItem' , auth , async (req,res) => {
 //(Private) purchasing a product
 router.post('/products/purchaseItem/:id' , auth , async (req,res) => {
     try{
-        const _id =req.params.id
+        const _id = req.params.id
         const product = await Product.findOne({_id})
-        if (req.user.balance > product.price){
+        if (req.user.balance > product.price ){
+            const seller = await User.findOne({name:product.seller}) 
+            seller.balance += product.price
+            await seller.save()
+            
             req.user.balance -= product.price
             req.user.purchasedItems = req.user.purchasedItems.concat(product)
             await req.user.save()
-            res.status(200).send(req.user)
+            res.status(200).send({buyer:req.user,seller})
         } else {
-            throw new Error("Insufficient balance.")
+            throw new Error("Purchasing Failed.")
         }
     } catch(error) {
         res.status(400).send(error.message)
