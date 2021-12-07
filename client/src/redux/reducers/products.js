@@ -5,7 +5,10 @@ import {
   FETCH_SINGLE_PRODUCT,
   ADD_PRODUCT,
   ADD_PRODUCT_SUCCESS,
-  ADD_PRODUCT_FAIL
+  ADD_PRODUCT_FAIL,
+  DELETE_PRODUCT,
+  DELETE_PRODUCT_SUCCESS,
+  DELETE_PRODUCT_FAIL
 } from "../types";
 
 const initialState = {
@@ -55,11 +58,25 @@ const productsReducer = (state = initialState, action) => {
         loading: false,
         singleProduct: action.payload
       };
+
+    //add product
     case ADD_PRODUCT:
       return { loading: true };
     case ADD_PRODUCT_SUCCESS:
       return { product: action.payload };
     case ADD_PRODUCT_FAIL:
+      return {
+        loading: false,
+        error: action.payload
+      };
+    //delete product
+    case DELETE_PRODUCT:
+      return { loading: true };
+    case DELETE_PRODUCT_SUCCESS:
+      return {
+        products: state.products.filter(item => item.id !== action.payload._id)
+      };
+    case DELETE_PRODUCT_FAIL:
       return {
         loading: false,
         error: action.payload
