@@ -40,7 +40,7 @@ const ContactForm = () => {
             className="contact-form__input-field"
             type="text"
             placeholder="title"
-            onchange={(e) => settitle(e.target.value)}
+            onchange={(e) => setTitle(e.target.value)}
           />
         </div>
         <div className="contact-form__message mt-4">
