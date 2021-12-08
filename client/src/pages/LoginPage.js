@@ -15,10 +15,18 @@ const LoginPage = () => {
   const [SignUpEmail, setSignUpEmail] = useState("");
   const [SignUpPassword, setSignUpPassword] = useState("");
   const dispatch = useDispatch();
+
   const handleLoginForm = (e) => {
     e.preventDefault();
     console.log(LoginEmail, LoginPassword);
     dispatch(loginUserAction(LoginEmail, LoginPassword));
+
+    const fromObj = this.props.location.state || {
+      from: { pathname: "/" }
+    };
+
+    const path = fromObj.from.pathname;
+    this.props.history.push(path);
   };
 
   const handleSignUpForm = (e) => {
