@@ -26,7 +26,7 @@ const LoginPage = (props) => {
     };
 
     const path = fromObj.from.pathname;
-    props.history.push(path);
+    props.history.push("/");
   };
 
   const handleSignUpForm = (e) => {
@@ -39,7 +39,7 @@ const LoginPage = (props) => {
     };
 
     const path = fromObj.from.pathname;
-    props.history.push(path);
+    props.history.push("/");
   };
   return (
     <>
