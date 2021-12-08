@@ -39,3 +39,8 @@ export const LOGIN_FAIL = 'LOGIN_FAIL';
 
 //LOGUT 
 export const LOGOUT = 'LOGOUT';
+
+//USER_ACCOUNT
+export const USER_ACCOUNT = 'USER_ACCOUNT';
+export const USER_ACCOUNT_SUCCESS = 'USER_ACCOUNT_SUCCESS';
+export const USER_ACCOUNT_FAIL = 'USER_ACCOUNT_FAIL'
