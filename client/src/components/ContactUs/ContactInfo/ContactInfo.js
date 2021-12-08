@@ -1,8 +1,16 @@
 import './ContactInfo.scss';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
-import { useSelector } from 'react-redux';
-const ContactInfo = ({user}) => {
-  const { loading } = useSelector((state) => state.user);
+import {getUserAccountAction} from '../../../redux/actions/users'
+const ContactInfo = () =>{
+  const dispatch = useDispatch();
+  // useEffect(()=>{
+  //   dispatch(getUserAccountAction())
+  // },[dispatch]);
+  const {userInfo} = useSelector(state =>state.user)
+  const {user} = userInfo
+  console.log(user)
   return (
     <div className="contact-info">
       <h4
@@ -11,19 +19,16 @@ const ContactInfo = ({user}) => {
       >
        Info
       </h4>
-      <h4 className="contact-info__title mb-2">{}</h4>
+      <h4 className="contact-info__title mb-2">Name</h4>
       <p className="contact-info__text mb-4">
-        1600 Amphitheatre Parkway New York
+       {user.name}
       </p>
       <h4 className="contact-info__title mb-2">cach balance</h4>
-      <p className="contact-info__text mb-4">1.800.458.556</p>
+      <p className="contact-info__text mb-4">{user.balance}</p>
       <h4 className="contact-info__title mb-2">E-mail</h4>
       <p className="contact-info__text mb-4">
-        support@your-domain.com
+        {user.email}
         <br />
-        help@your-domain.com
-        <br />
-        SALES
       </p>
     </div>
   );

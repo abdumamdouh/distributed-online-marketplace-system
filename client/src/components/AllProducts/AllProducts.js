@@ -10,7 +10,8 @@ import './AllProducts.scss';
 const AllProducts = ({ products }) => {
   const [visible, setVisible] = useState(6);
   const { loading } = useSelector((state) => state.products);
-
+  const {userInfo} = useSelector(state =>state.user)
+  const {user} = userInfo
   const showMoreProducts = () => {
     setVisible((oldValue) => oldValue + 3);
   };
@@ -35,7 +36,7 @@ const AllProducts = ({ products }) => {
       <div className="container">
         <Title title="OUR PRODUCTS" />
         <div className="row">
-          {products.slice(0, visible).map((product) => {
+          {products.slice(0, visible).filter(product=> product.seller !== user.name).map((product) => {
             return (
               <div
                 key={product.id}
