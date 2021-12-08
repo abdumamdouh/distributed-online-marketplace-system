@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { MdDelete } from "react-icons/md";
 import { CgCloseO } from "react-icons/cg";
 
+import { withRouter } from "react-router-dom";
+
 import { formatPrice } from "../../utils/formatPrice";
 
 import { closeSideCart } from "../../redux/actions/sideBar";
@@ -13,8 +15,8 @@ import cartEmptyImg from "../../assets/images/cart-empty.jpg";
 import "./CartSidebar.scss";
 
 const CartSidebar = () => {
-  const { cart } = useSelector(state => state.products);
-  const { sideCartOpen } = useSelector(state => state.sidebar);
+  const { cart } = useSelector((state) => state.products);
+  const { sideCartOpen } = useSelector((state) => state.sidebar);
   const dispatch = useDispatch();
 
   const [totalPrice, setTotalPrice] = useState(0);
@@ -22,12 +24,19 @@ const CartSidebar = () => {
   useEffect(() => {
     let price = 0;
 
-    cart.forEach(item => {
+    cart.forEach((item) => {
       price += item.qty * item.price;
     });
 
     setTotalPrice(price);
   }, [cart, totalPrice, setTotalPrice]);
+
+  const handleCheckOut = () => {
+    console.log("check out");
+
+    const path = "/account";
+    this.props.history.push(path);
+  };
 
   return (
     <div
@@ -48,7 +57,7 @@ const CartSidebar = () => {
         </div>
         <div className="cart-sidebar__content">
           {cart.length > 0 ? (
-            cart.map(item => {
+            cart.map((item) => {
               return (
                 <div key={item.id} className="cart-sidebar__products">
                   <div className="cart-sidebar__product-image-container">
@@ -88,7 +97,11 @@ const CartSidebar = () => {
 
         <div className="cart-sidebar__footer">
           <p>Total: {formatPrice(totalPrice)} </p>
-          <button type="button" className="btn btn-primary">
+          <button
+            type="button"
+            className="btn btn-primary"
+            onClick={handleCheckOut}
+          >
             Check out
           </button>
         </div>
@@ -97,4 +110,4 @@ const CartSidebar = () => {
   );
 };
 
-export default CartSidebar;
+export default withRouter(CartSidebar);
