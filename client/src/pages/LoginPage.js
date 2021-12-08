@@ -1,7 +1,8 @@
 import Title from "../components/Title/Title";
 
 import { useState } from "react";
-
+import { useDispatch } from "react-redux";
+import {registerUserAction, loginUserAction} from '../redux/actions/users'
 import "../components/ContactUs/ContactForm/ContactForm.scss";
 
 const LoginPage = () => {
@@ -11,15 +12,17 @@ const LoginPage = () => {
   const [SignUpName, setSignUpName] = useState("");
   const [SignUpEmail, setSignUpEmail] = useState("");
   const [SignUpPassword, setSignUpPassword] = useState("");
-
+  const dispatch = useDispatch();
   const handleLoginForm = (e) => {
     e.preventDefault();
     console.log(LoginEmail, LoginPassword);
+    dispatch(loginUserAction(LoginEmail, LoginPassword));
   };
 
   const handleSignUpForm = (e) => {
     e.preventDefault();
     console.log(SignUpName, SignUpEmail, SignUpPassword);
+    dispatch(registerUserAction(SignUpName, SignUpEmail, SignUpPassword))
   };
   return (
     <>
@@ -64,7 +67,7 @@ const LoginPage = () => {
                   <button
                     type="submit"
                     className="btn"
-                    style={{ "margin-left": "10px", alignItems: "center" }}
+                    style={{ "marginLeft": "10px", alignItems: "center" }}
                   >
                     Login
                   </button>

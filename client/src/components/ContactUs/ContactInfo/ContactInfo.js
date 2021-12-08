@@ -1,6 +1,8 @@
 import './ContactInfo.scss';
 
-const ContactInfo = () => {
+import { useSelector } from 'react-redux';
+const ContactInfo = ({user}) => {
+  const { loading } = useSelector((state) => state.user);
   return (
     <div className="contact-info">
       <h4
@@ -9,7 +11,7 @@ const ContactInfo = () => {
       >
        Info
       </h4>
-      <h4 className="contact-info__title mb-2">Name</h4>
+      <h4 className="contact-info__title mb-2">{}</h4>
       <p className="contact-info__text mb-4">
         1600 Amphitheatre Parkway New York
       </p>

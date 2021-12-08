@@ -8,7 +8,7 @@ const ContactForm = () => {
   const [price, setPrice] = useState(0);
   const [description, setDescription] = useState("");
   const [title, setTitle] = useState("");
-
+  const [imageUrl, setImageUrl] = useState("")
   const dispatch = useDispatch();
   return (
     <div className="contact-form">
@@ -16,7 +16,7 @@ const ContactForm = () => {
       <form
         onSubmit={e => {
           e.preventDefault();
-          const data = { name, price, description, title };
+          const data = { name, price, description, title, imageUrl };
           dispatch(addProductAction(data));
         }}
         className="contact-form__form"
@@ -26,13 +26,13 @@ const ContactForm = () => {
             className="contact-form__input-field"
             type="text"
             placeholder="Name"
-            onchange = {(e) => setName(e.target.value)}
+            onChange = {(e) => setName(e.target.value)}
           />
           <input
             className="contact-form__input-field"
             type="text"
             placeholder="Price"
-            onchange={(e) => setPrice(e.target.value)}
+            onChange={(e) => setPrice(e.target.value)}
           />
         </div>
         <div className="contact-form__message mt-4">
@@ -40,7 +40,15 @@ const ContactForm = () => {
             className="contact-form__input-field"
             type="text"
             placeholder="title"
-            onchange={(e) => setTitle(e.target.value)}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+        </div>
+        <div className="contact-form__message mt-4">
+          <input
+            className="contact-form__input-field"
+            type="text"
+            placeholder="image URL"
+            onChange={(e) => setImageUrl(e.target.value)}
           />
         </div>
         <div className="contact-form__message mt-4">
@@ -48,7 +56,7 @@ const ContactForm = () => {
             rows="10"
             className="contact-form__message"
             placeholder="description"
-            onchange={(e)=> setDescription(e.target.value)}
+            onChange={(e)=> setDescription(e.target.value)}
           ></textarea>
         </div>
         <button type="submit" className="btn">

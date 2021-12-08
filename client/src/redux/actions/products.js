@@ -14,7 +14,7 @@ import {
 } from '../types';
 
 const URL = 'https://600c30e638fd25001702cf7e.mockapi.io/api/v1/products';
-
+const serverURL = 'http://localhost:5000'
 export const fetchProducts = () => {
   return async (dispatch) => {
     try {
@@ -61,7 +61,7 @@ export const addProductAction = (productInfo) =>{
         const config ={
           'Content-Type' : 'application/json'
         }
-        const {data} = await axios.post('/api/products/addItem', productInfo, config);
+        const {data} = await axios.post(`${serverURL}/products/addItem`, productInfo, config);
         dispatch({ type: ADD_PRODUCT_SUCCESS, payload: data })
     } catch (error) {
       dispatch({ type: ADD_PRODUCT_FAIL, payload: error.response&&error.response.data.message })
@@ -74,7 +74,7 @@ export const deleteProductAction =productId=>{
   return async(dispatch) =>{
     try{
         dispatch({type: DELETE_PRODUCT})
-        const {data} = await axios.delete(`/api/products/deleteItem/${productId}`)
+        const {data} = await axios.delete(`${serverURL}/products/deleteItem/${productId}`)
         dispatch ({type: DELETE_PRODUCT_SUCCESS, payload: data})
     }
     catch(error){

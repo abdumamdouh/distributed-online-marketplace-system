@@ -4,7 +4,8 @@ require('mongoose-type-url');
 // defining product Schema
 const productSchema = new mongoose.Schema({
     seller: {
-        type: String
+        type: String,
+        default: 'Ahmed'
     },
     name: {
         type: String,
@@ -26,27 +27,33 @@ const productSchema = new mongoose.Schema({
         }
     },
     brand:{
-        type: String
+        type: String,
+        default: 'Nike'
     },
     best:{
-        type: Boolean
+        type: Boolean,
+        default: true
     },
     featured:{
-        type: Boolean
+        type: Boolean,
+        default: false
     },
     image: {
         type: mongoose.SchemaTypes.Url,
     },
     gallarey: [{
         sku:{
-            type: String
+            type: String,
+            default: 'v2SmiuNbZ8'
         },
         url:{
-            type: mongoose.SchemaTypes.Url
+            type: mongoose.SchemaTypes.Url,
+            default: 'https://i.pinimg.com/564x/70/2e/b7/702eb7c2db52a045e74a20145021eea2.jpg'
         }
     }],
     stars:{
-        type: Number
+        type: Number,
+        default: 2
     },
     description:{
         type: String,

@@ -8,7 +8,7 @@ import {
   LOGIN_FAIL,
   LOGOUT
 } from "../types";
-
+const serverURL = "http://localhost:5000"
 const registerUserAction = (name, email, password) => {
   return async (dispatch) => {
     try {
@@ -19,7 +19,7 @@ const registerUserAction = (name, email, password) => {
         }
       };
       const { data } = await axios.post(
-        "api/users/",
+        `${serverURL}/users/`,
         {
           name,
           email,
@@ -47,7 +47,7 @@ const loginUserAction = (email, password) => {
         }
       };
       const { data } = await axios.post(
-        "api/users/login",
+        `${serverURL}/users/login`,
         {
           email,
           password
