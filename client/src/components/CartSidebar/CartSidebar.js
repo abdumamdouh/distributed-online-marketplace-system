@@ -14,7 +14,7 @@ import cartEmptyImg from "../../assets/images/cart-empty.jpg";
 
 import "./CartSidebar.scss";
 
-const CartSidebar = () => {
+const CartSidebar = (props) => {
   const { cart } = useSelector((state) => state.products);
   const { sideCartOpen } = useSelector((state) => state.sidebar);
   const dispatch = useDispatch();
@@ -35,7 +35,7 @@ const CartSidebar = () => {
     console.log("check out");
 
     const path = "/account";
-    this.props.history.push(path);
+    props.history.push(path);
   };
 
   return (

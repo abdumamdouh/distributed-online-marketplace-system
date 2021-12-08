@@ -7,7 +7,7 @@ import "../components/ContactUs/ContactForm/ContactForm.scss";
 
 import { withRouter } from "react-router-dom";
 
-const LoginPage = () => {
+const LoginPage = (props) => {
   const [LoginEmail, setLoginEmail] = useState("");
   const [LoginPassword, setLoginPassword] = useState("");
 
@@ -26,7 +26,7 @@ const LoginPage = () => {
     };
 
     const path = fromObj.from.pathname;
-    this.props.history.push(path);
+    props.history.push(path);
   };
 
   const handleSignUpForm = (e) => {
@@ -39,7 +39,7 @@ const LoginPage = () => {
     };
 
     const path = fromObj.from.pathname;
-    this.props.history.push(path);
+    props.history.push(path);
   };
   return (
     <>
