@@ -21,11 +21,11 @@ const LoginPage = (props) => {
     console.log(LoginEmail, LoginPassword);
     dispatch(loginUserAction(LoginEmail, LoginPassword));
 
-    const fromObj = this.props.location.state || {
-      from: { pathname: "/" }
-    };
+    // const fromObj = this.props.location.state || {
+    //   from: { pathname: "/" }
+    // };
 
-    const path = fromObj.from.pathname;
+    // const path = fromObj.from.pathname;
     props.history.push("/");
   };
 
@@ -34,11 +34,11 @@ const LoginPage = (props) => {
     console.log(SignUpName, SignUpEmail, SignUpPassword);
     dispatch(registerUserAction(SignUpName, SignUpEmail, SignUpPassword));
 
-    const fromObj = this.props.location.state || {
-      from: { pathname: "/" }
-    };
+    // const fromObj = this.props.location.state || {
+    //   from: { pathname: "/" }
+    // };
 
-    const path = fromObj.from.pathname;
+    // const path = fromObj.from.pathname;
     props.history.push("/");
   };
   return (
