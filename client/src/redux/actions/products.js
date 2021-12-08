@@ -55,7 +55,7 @@ export const fetchSingleProduct = (id) => {
     }
   };
 };
-
+//TODO: edit state in reducer
 //Add products to the inventory 
 export const addProductAction = (productInfo) =>{
   return async (dispatch) => {
@@ -71,7 +71,7 @@ export const addProductAction = (productInfo) =>{
     }
   }
 }
-
+//TODO: test
 //Purchase products to the inventory 
 export const purchaseProductAction = (id, token) =>{
   return async (dispatch) => {
@@ -88,7 +88,7 @@ export const purchaseProductAction = (id, token) =>{
     }
   }
 }
-
+//TODO: check
 //delete product 
 export const deleteProductAction =productId=>{
   return async(dispatch) =>{
