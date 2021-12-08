@@ -10,7 +10,10 @@ import {
   ADD_PRODUCT_FAIL,
   DELETE_PRODUCT,
   DELETE_PRODUCT_SUCCESS,
-  DELETE_PRODUCT_FAIL
+  DELETE_PRODUCT_FAIL,
+  PURCHASE_PRODUCT,
+  PURCHASE_PRODUCT_SUCCESS,
+  PURCHASE_PRODUCT_FAIL,
 } from '../types';
 
 const URL = 'https://600c30e638fd25001702cf7e.mockapi.io/api/v1/products';
@@ -65,6 +68,23 @@ export const addProductAction = (productInfo) =>{
         dispatch({ type: ADD_PRODUCT_SUCCESS, payload: data })
     } catch (error) {
       dispatch({ type: ADD_PRODUCT_FAIL, payload: error.response&&error.response.data.message })
+    }
+  }
+}
+
+//Purchase products to the inventory 
+export const purchaseProductAction = (id, token) =>{
+  return async (dispatch) => {
+    try {
+        dispatch({ type: PURCHASE_PRODUCT})
+        const config ={
+          'Content-Type' : 'application/json',
+          'Authorization': 'Bearer ' + token
+        }
+        const { data } = await axios.post(`${serverURL}/products/purchaseItem/${id}`, config);
+        dispatch({ type: PURCHASE_PRODUCT_SUCCESS, payload: data })
+    } catch (error) {
+      dispatch({ type: PURCHASE_PRODUCT_FAIL, payload: error.response&&error.response.data.message })
     }
   }
 }
