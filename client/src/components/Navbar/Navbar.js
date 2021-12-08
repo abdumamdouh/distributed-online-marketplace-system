@@ -8,6 +8,8 @@ import { FaBars } from "react-icons/fa";
 // import navbar links from utils
 import { navbarLinks } from "../../utils/navbarLinks";
 
+import { withRouter } from "react-router-dom";
+
 // import logo from assets
 import logo from "../../assets/images/hogash-logo-black.png";
 
@@ -32,10 +34,13 @@ const Navbar = () => {
     setCartCount(count);
   }, [cart, cartCount]);
 
-  const handleLogOut = () => {
+  const handleLogOut = (props) => {
     console.log("log out");
     //TODO dispatch the action to logout
     dispatch(logoutUserAction());
+
+    const path = "/login";
+    props.history.push(path);
   };
 
   return (
@@ -110,4 +115,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default withRouter(Navbar);
