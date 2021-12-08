@@ -19,7 +19,7 @@ import { logoutUserAction } from "../../redux/actions/users";
 // navbar styles
 import "./Navbar.scss";
 
-const Navbar = () => {
+const Navbar = (props) => {
   const { cart } = useSelector((state) => state.products);
 
   const dispatch = useDispatch();
@@ -34,7 +34,7 @@ const Navbar = () => {
     setCartCount(count);
   }, [cart, cartCount]);
 
-  const handleLogOut = (props) => {
+  const handleLogOut = () => {
     console.log("log out");
     //TODO dispatch the action to logout
     dispatch(logoutUserAction());
