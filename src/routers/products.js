@@ -42,7 +42,7 @@ router.post('/products/addItem' , auth , async (req,res) => {
 })
 
 //(Private) purchasing a product
-router.post('/products/purchaseItem/:id' , auth , async (req,res) => {
+router.post('/products/purchaseItem/:id' , async (req,res) => {
     try{
         const _id = req.params.id
         const product = await Product.findOne({_id})
