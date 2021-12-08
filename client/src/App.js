@@ -11,7 +11,6 @@ import {
   Shirts,
   Shoes,
   HeadPhones,
-  About,
   Contact,
   Cart,
   AllProducts,
@@ -62,12 +61,6 @@ const App = () => {
         />
         <ProtectedRoute
           exact
-          path="/reports"
-          component={About}
-          name="About Page"
-        />
-        <ProtectedRoute
-          exact
           path="/account"
           component={Contact}
           name="Contact Page"
@@ -85,8 +78,6 @@ const App = () => {
           component={SingleProduct}
           name="SingleProduct Page"
         />
-
-        {/* <Route exact path="/products/:id" children={<SingleProduct />} /> */}
 
         <Route
           exact
