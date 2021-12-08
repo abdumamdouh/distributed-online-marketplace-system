@@ -13,7 +13,7 @@ const ProtectedRoute = ({ component: Component, exact, path }) => {
       render={(props) =>
         // this.props.authedUser
         //TODO: add condition for Protected Route
-        true ? (
+        userInfo ? (
           <Component {...props} />
         ) : (
           <Redirect
