@@ -2,8 +2,10 @@ import Title from "../components/Title/Title";
 
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import {registerUserAction, loginUserAction} from '../redux/actions/users'
+import { registerUserAction, loginUserAction } from "../redux/actions/users";
 import "../components/ContactUs/ContactForm/ContactForm.scss";
+
+import { withRouter } from "react-router-dom";
 
 const LoginPage = () => {
   const [LoginEmail, setLoginEmail] = useState("");
@@ -22,7 +24,14 @@ const LoginPage = () => {
   const handleSignUpForm = (e) => {
     e.preventDefault();
     console.log(SignUpName, SignUpEmail, SignUpPassword);
-    dispatch(registerUserAction(SignUpName, SignUpEmail, SignUpPassword))
+    dispatch(registerUserAction(SignUpName, SignUpEmail, SignUpPassword));
+
+    const fromObj = this.props.location.state || {
+      from: { pathname: "/" }
+    };
+
+    const path = fromObj.from.pathname;
+    this.props.history.push(path);
   };
   return (
     <>
@@ -67,7 +76,7 @@ const LoginPage = () => {
                   <button
                     type="submit"
                     className="btn"
-                    style={{ "marginLeft": "10px", alignItems: "center" }}
+                    style={{ marginLeft: "10px", alignItems: "center" }}
                   >
                     Login
                   </button>
@@ -147,4 +156,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default withRouter(LoginPage);
