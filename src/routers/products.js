@@ -7,7 +7,7 @@ const auth = require('../middleware/auth')
 const  router = new express.Router()
 
 //(Private) Get all products
-router.get('/products', auth , async (req,res) =>{
+router.get('/products', async (req,res) =>{
     try{
         const products = await Product.find({})
         res.send(products)

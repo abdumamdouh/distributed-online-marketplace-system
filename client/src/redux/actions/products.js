@@ -18,7 +18,7 @@ const serverURL = 'http://localhost:5000'
 export const fetchProducts = () => {
   return async (dispatch) => {
     try {
-      const response = await axios.get(URL);
+      const response = await axios.get(`${serverURL}/products/`);
       dispatch({ type: FETCH_PRODUCTS, payload: response.data });
     } catch (error) {
       console.log(error);
@@ -45,7 +45,7 @@ export const removeFromCart = (itemID) => {
 export const fetchSingleProduct = (id) => {
   return async (dispatch) => {
     try {
-      const response = await axios.get(`${URL}/${id}`);
+      const response = await axios.get(`${serverURL}/${id}`);
       dispatch({ type: FETCH_SINGLE_PRODUCT, payload: response.data });
     } catch (error) {
       console.log(error);
