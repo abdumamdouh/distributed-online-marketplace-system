@@ -1,52 +1,44 @@
-import { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { MdDelete } from "react-icons/md";
-import { CgCloseO } from "react-icons/cg";
-import { withRouter } from "react-router-dom";
+import { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { MdDelete } from 'react-icons/md';
+import { CgCloseO } from 'react-icons/cg';
 
-import { formatPrice } from "../../utils/formatPrice";
+import { formatPrice } from '../../utils/formatPrice';
 
-import { closeSideCart } from "../../redux/actions/sideBar";
-import { removeFromCart } from "../../redux/actions/products";
+import { closeSideCart } from '../../redux/actions/sideBar';
+import { removeFromCart } from '../../redux/actions/products';
 import { purchaseProductAction } from "../../redux/actions/products";
-import cartEmptyImg from "../../assets/images/cart-empty.jpg";
 
-import "./CartSidebar.scss";
+import cartEmptyImg from '../../assets/images/cart-empty.jpg';
 
-const CartSidebar = props => {
-  const { cart } = useSelector(state => state.products);
-  const { sideCartOpen } = useSelector(state => state.sidebar);
+import './CartSidebar.scss';
+
+const CartSidebar = () => {
+  const { cart } = useSelector((state) => state.products);
+  const { sideCartOpen } = useSelector((state) => state.sidebar);
   const dispatch = useDispatch();
-  // const { userInfo } = useSelector(state => state.user);
-  // const { user } = userInfo;
+
   const [totalPrice, setTotalPrice] = useState(0);
 
   useEffect(() => {
     let price = 0;
 
-    cart.forEach(item => {
+    cart.forEach((item) => {
       price += item.qty * item.price;
     });
 
     setTotalPrice(price);
   }, [cart, totalPrice, setTotalPrice]);
 
-  const handleCheckOut = (e) => {
-    e.preventDefault();
-    console.log("check out");
-    const path = "/account";
-    props.history.push(path);
-  };
-
   return (
     <div
       className={
-        sideCartOpen ? "cart-overlay cart-overlay--show" : "cart-overlay"
+        sideCartOpen ? 'cart-overlay cart-overlay--show' : 'cart-overlay'
       }
     >
       <div
         className={
-          sideCartOpen ? "cart-sidebar cart-sidebar--show" : "cart-sidebar"
+          sideCartOpen ? 'cart-sidebar cart-sidebar--show' : 'cart-sidebar'
         }
       >
         <div className="cart-sidebar__heading">
@@ -57,7 +49,7 @@ const CartSidebar = props => {
         </div>
         <div className="cart-sidebar__content">
           {cart.length > 0 ? (
-            cart.map(item => {
+            cart.map((item) => {
               return (
                 <div key={item.id} className="cart-sidebar__products">
                   <div className="cart-sidebar__product-image-container">
@@ -81,16 +73,6 @@ const CartSidebar = props => {
                       </p>
                     </div>
                   </div>
-                  <div className="cart-sidebar__product-price">
-                    <p>Total: {formatPrice(totalPrice)} </p>
-                    <button
-                      type="button"
-                      className="btn btn-primary"
-                      onClick={()=> dispatch(purchaseProductAction(item.id))}
-                    >
-                      Check out
-                    </button>
-                  </div>
                 </div>
               );
             })
@@ -104,9 +86,19 @@ const CartSidebar = props => {
             </div>
           )}
         </div>
+        <div className="cart-sidebar__footer">
+                    <p>Total: {formatPrice(totalPrice)} </p>
+                    <button
+                      type="button"
+                      className="btn btn-primary"
+                      onClick={()=> dispatch(purchaseProductAction())}
+                    >
+                      Check out
+                    </button>
+                  </div>
       </div>
     </div>
   );
 };
 
-export default withRouter(CartSidebar);
+export default CartSidebar;
