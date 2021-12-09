@@ -19,9 +19,9 @@ const Searchbar = () => {
         className="searchbar"
        onChange={e => setSearchText(e.target.value)}
       />
-      {/* {filteredProducts.filter(item =>{
+      {filteredProducts.filter(item =>{
         if(searchText=="")
-        {return <AllProducts products={filteredProducts}/>}
+        { <AllProducts products={filteredProducts}/>}
         else if (item.name.toLowerCase().includes(searchText.toLowerCase()))
         {return item}
       }).map((item,key)=>{
@@ -32,7 +32,7 @@ const Searchbar = () => {
                 <Product product={item} />
               </div>
         )})
-        } */}
+        }
       
     </div>
   );
