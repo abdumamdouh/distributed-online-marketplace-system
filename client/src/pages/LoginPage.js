@@ -71,7 +71,7 @@ const LoginPage = (props) => {
                   >
                     <input
                       className="contact-form__input-field"
-                      type="text"
+                      type="password"
                       placeholder="Password"
                       value={LoginPassword}
                       onChange={(e) => {
@@ -137,13 +137,13 @@ const LoginPage = (props) => {
                   >
                     <input
                       className="contact-form__input-field"
-                      type="text"
                       placeholder="Password"
                       value={SignUpPassword}
                       onChange={(e) => {
                         setSignUpPassword(e.target.value);
                         //console.log(e.target.value);
                       }}
+                      type="password"
                     />
                   </div>
                   <div className="contact-form__message mt-4"></div>
