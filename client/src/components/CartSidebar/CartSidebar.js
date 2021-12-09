@@ -48,10 +48,11 @@ const CartSidebar = () => {
           </span>
         </div>
         <div className="cart-sidebar__content">
+
           {cart.length > 0 ? (
             cart.map((item) => {
               return (
-                <div key={item.id} className="cart-sidebar__products">
+                <div key={item._id} className="cart-sidebar__products">
                   <div className="cart-sidebar__product-image-container">
                     <img
                       className="cart-sidebar__product-image"

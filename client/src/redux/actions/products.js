@@ -87,15 +87,18 @@ export const addProductAction = (product,token) =>{
 export const purchaseProductAction = (id, token) =>{
   return async (dispatch) => {
     try {
-        dispatch({ type: PURCHASE_PRODUCT})
+        
+
         const config ={
           'Content-Type' : 'application/json',
           //'Authorization': 'Bearer ' + token
         }
         const { data } = await axios.post(`${serverURL}/products/purchaseItem/${id}`, config);
+
         dispatch({ type: PURCHASE_PRODUCT_SUCCESS, payload: data })
+
     } catch (error) {
-      dispatch({ type: PURCHASE_PRODUCT_FAIL, payload: error.response&&error.response.data.message })
+
     }
   }
 }
