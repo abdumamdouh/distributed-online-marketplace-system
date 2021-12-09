@@ -15,6 +15,7 @@ const ContactUs = () => {
   const { userInfo } = useSelector(state => state.user);
 
   const { user } = userInfo;
+  const { token } = userInfo;
 
   const handleDelete = (e, id, usertoken) => {
     e.preventDefault();
@@ -49,7 +50,7 @@ const ContactUs = () => {
                   <button
                     type="button"
                     className="btn btn-primary"
-                    onClick={()=> dispatch(deleteProductAction(product._id))}
+                    onClick={()=> dispatch(deleteProductAction(product._id,token))}
                   >
                     Delete
                   </button>

@@ -7,7 +7,9 @@ const auth = require('../middleware/auth')
 const  router = new express.Router()
 
 //(Private) Get all products
-router.get('/products',auth ,async (req,res) =>{
+
+router.get('/products', auth, async (req,res) =>{
+
     try{
         const products = await Product.find({})
         res.send(products)
@@ -17,6 +19,7 @@ router.get('/products',auth ,async (req,res) =>{
 }) 
 
 //(Private) Get product by it's id
+
 router.get('/products/:id',auth ,async (req,res) =>{
     try{
         const product = await Product.findById(req.params.id)
@@ -42,6 +45,7 @@ router.post('/products/addItem' , auth, async (req,res) => {
 })
 
 //(Private) purchasing a product
+
 router.post('/products/purchaseItem/:id' , auth , async (req,res) => {
     try{
         const _id = req.params.id
@@ -64,6 +68,7 @@ router.post('/products/purchaseItem/:id' , auth , async (req,res) => {
 })
 
 //(Private) delete a product  
+
 router.delete('/products/deleteItem/:id', auth ,async  (req,res)=>{
     try{
         let valid_delete = 0 
