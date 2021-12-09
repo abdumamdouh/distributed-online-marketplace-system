@@ -74,33 +74,26 @@ const productsReducer = (state = initialState, action) => {
 
     //user purchase product
     case PURCHASE_PRODUCT:
-      return { loading: true };
+      return;
     case PURCHASE_PRODUCT_SUCCESS:
       return { product: action.payload };
     case PURCHASE_PRODUCT_FAIL:
-      return {
-        loading: false,
-        error: action.payload
-      };
+      return ;
 
     //user delete product
     case DELETE_PRODUCT:
-      return { loading: true };
+      return ;
     case DELETE_PRODUCT_SUCCESS:
-    console.log(action.payload.id)
+    //console.log(action.payload.id)
       return {
         ...state,
         products: state.products.filter(
-          (item) => item.id !== action.payload.id
+          (item) => item._id !== action.payload._id
         )
         
       };
     case DELETE_PRODUCT_FAIL:
-      return {
-        ...state,
-        loading: false,
-        error: action.payload
-      };
+      return ;
     default:
       return state;
   }
