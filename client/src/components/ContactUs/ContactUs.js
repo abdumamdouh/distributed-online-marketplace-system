@@ -38,8 +38,9 @@ const ContactUs = () => {
           <Title title="To be Sold Products" />
         </div>
         <div className="row">
-          {products
-            .filter(product => product.seller === user.name)
+          { user.inventory.length > 0 && user.inventory
+            //products
+            //.filter(product => product.seller === user.name)
             .map(product => {
               return (
                 <div
