@@ -14,11 +14,15 @@ import cartEmptyImg from "../../assets/images/cart-empty.jpg";
 import "./CartSidebar.scss";
 
 const CartSidebar = props => {
+
   const { cart } = useSelector(state => state.products);
+
   const { sideCartOpen } = useSelector(state => state.sidebar);
   const dispatch = useDispatch();
+
   // const { userInfo } = useSelector(state => state.user);
-  // const { user } = userInfo;
+  // const { token } = userInfo;
+
   const [totalPrice, setTotalPrice] = useState(0);
 
   useEffect(() => {
@@ -56,10 +60,11 @@ const CartSidebar = props => {
           </span>
         </div>
         <div className="cart-sidebar__content">
+
           {cart.length > 0 ? (
             cart.map(item => {
               return (
-                <div key={item.id} className="cart-sidebar__products">
+                <div key={item._id} className="cart-sidebar__products">
                   <div className="cart-sidebar__product-image-container">
                     <img
                       className="cart-sidebar__product-image"
@@ -86,7 +91,7 @@ const CartSidebar = props => {
                     <button
                       type="button"
                       className="btn btn-primary"
-                      onClick={()=> dispatch(purchaseProductAction(item.id))}
+                      onClick={()=> dispatch(purchaseProductAction(item._id))}
                     >
                       Check out
                     </button>
