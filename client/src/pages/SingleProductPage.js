@@ -7,8 +7,10 @@ import SingleProduct from '../components/SingleProduct/SingleProduct';
 import { fetchSingleProduct } from '../redux/actions/products';
 
 const SingleProductPage = () => {
+  
   const { singleProduct } = useSelector((state) => state.products);
   const dispatch = useDispatch();
+
   const { id } = useParams();
 
   useEffect(() => {
