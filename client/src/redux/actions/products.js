@@ -57,14 +57,17 @@ export const fetchSingleProduct = (id) => {
 };
 //TODO: edit state in reducer
 //Add products to the inventory 
-export const addProductAction = (productInfo) =>{
+export const addProductAction = (product,token) =>{
   return async (dispatch) => {
     try {
         dispatch({ type: ADD_PRODUCT})
+
         const config ={
-          'Content-Type' : 'application/json'
+          'Content-Type' : 'application/json',
+          'Authorization': 'Bearer ' + token
         }
-        const {data} = await axios.post(`${serverURL}/products/addItem`, productInfo, config);
+        const {data} = await axios.post(`${serverURL}/products/addItem`, product, config);
+        
         dispatch({ type: ADD_PRODUCT_SUCCESS, payload: data })
     } catch (error) {
       dispatch({ type: ADD_PRODUCT_FAIL, payload: error.response&&error.response.data.message })
