@@ -64,17 +64,13 @@ const productsReducer = (state = initialState, action) => {
 
     //add product
     case ADD_PRODUCT:
-      return { loading: true };
+      return ;
     case ADD_PRODUCT_SUCCESS:
       return {
         ...state,
-        products: [...state.products, action.payload] };
+        products: [...state.products, action.payload.product] };
     case ADD_PRODUCT_FAIL:
-      return {
-        ...state,
-        loading: false,
-        error: action.payload
-      };
+      return ;
 
     //user purchase product
     case PURCHASE_PRODUCT:
