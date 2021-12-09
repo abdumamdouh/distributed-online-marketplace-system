@@ -1,14 +1,18 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { addProductAction } from "../../../redux/actions/products";
 import "./ContactForm.scss";
 
 const ContactForm = () => {
+  const { userInfo } = useSelector(state => state.user);
+  const { user } = userInfo;
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
   const [description, setDescription] = useState("");
   const [title, setTitle] = useState("");
   const [imageUrl, setImageUrl] = useState("")
+  const [seller, setSeller] = useState("")
   const dispatch = useDispatch();
   return (
     <div className="contact-form">
@@ -16,7 +20,8 @@ const ContactForm = () => {
       <form
         onSubmit={e => {
           e.preventDefault();
-          const data = { name, price, description, title, imageUrl };
+          setSeller(user.name)
+          const data = {seller, name, price, description, title, imageUrl };
           dispatch(addProductAction(data));
         }}
         className="contact-form__form"

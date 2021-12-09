@@ -66,9 +66,12 @@ const productsReducer = (state = initialState, action) => {
     case ADD_PRODUCT:
       return { loading: true };
     case ADD_PRODUCT_SUCCESS:
-      return { product: action.payload };
+      return {
+        ...state,
+         product: action.payload };
     case ADD_PRODUCT_FAIL:
       return {
+        ...state,
         loading: false,
         error: action.payload
       };
@@ -88,13 +91,17 @@ const productsReducer = (state = initialState, action) => {
     case DELETE_PRODUCT:
       return { loading: true };
     case DELETE_PRODUCT_SUCCESS:
+    console.log(action.payload.id)
       return {
+        ...state,
         products: state.products.filter(
-          (item) => item.id !== action.payload._id
+          (item) => item.id !== action.payload.id
         )
+        
       };
     case DELETE_PRODUCT_FAIL:
       return {
+        ...state,
         loading: false,
         error: action.payload
       };

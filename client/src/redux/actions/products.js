@@ -48,7 +48,7 @@ export const removeFromCart = (itemID) => {
 export const fetchSingleProduct = (id) => {
   return async (dispatch) => {
     try {
-      const response = await axios.get(`${serverURL}/${id}`);
+      const response = await axios.get(`${serverURL}/products/${id}`);
       dispatch({ type: FETCH_SINGLE_PRODUCT, payload: response.data });
     } catch (error) {
       console.log(error);
@@ -79,7 +79,7 @@ export const purchaseProductAction = (id, token) =>{
         dispatch({ type: PURCHASE_PRODUCT})
         const config ={
           'Content-Type' : 'application/json',
-          'Authorization': 'Bearer ' + token
+          //'Authorization': 'Bearer ' + token
         }
         const { data } = await axios.post(`${serverURL}/products/purchaseItem/${id}`, config);
         dispatch({ type: PURCHASE_PRODUCT_SUCCESS, payload: data })
