@@ -17,9 +17,12 @@ const ContactUs = () => {
   const { user } = userInfo;
   const { token } = userInfo;
 
-  const handleDelete = (e, id, usertoken) => {
-    e.preventDefault();
-    dispatch(deleteProductAction(id, usertoken));
+  const handleDelete = (id, token) => {
+
+    dispatch(deleteProductAction(id,token));
+    // products = products.filter( product => product._id !== id);
+
+
   };
 
   return (
@@ -50,7 +53,7 @@ const ContactUs = () => {
                   <button
                     type="button"
                     className="btn btn-primary"
-                    onClick={()=> dispatch(deleteProductAction(product._id,token))}
+                    onClick={()=> handleDelete(product._id,token)}
                   >
                     Delete
                   </button>
@@ -72,7 +75,7 @@ const ContactUs = () => {
                 <button
                   type="button"
                   className="btn btn-primary"
-                  onClick={()=> dispatch(deleteProductAction(product._id))}
+                  onClick={()=> handleDelete(product._id,token)}
                 >
                   Delete
                 </button>

@@ -23,9 +23,10 @@ export const fetchProducts = () => {
   return async (dispatch) => {
     try {
       const response = await axios.get(`${serverURL}/products/`);
+      console.log("alooo",response.data);
       dispatch({ type: FETCH_PRODUCTS, payload: response.data });
     } catch (error) {
-      console.log(error);
+      console.log(error.message);
     }
   };
 };
@@ -119,7 +120,6 @@ export const deleteProductAction =(productId,token)=>{
   
         const data = await rawResponse.json();
 
-        //const {data} = await axios.delete(`${serverURL}/products/deleteItem/${productId}`)
         dispatch ({type: DELETE_PRODUCT_SUCCESS, payload: data})
     }
     catch(error){

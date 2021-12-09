@@ -72,7 +72,7 @@ router.delete('/products/deleteItem/:id', auth ,async  (req,res)=>{
     try{
         let valid_delete = 0 
         for (let i = 0 ; i < req.user.inventory.length ; i++){
-            console.log(req.user.inventory[i]._id.toString() , req.params.id)
+            // console.log(req.user.inventory[i]._id.toString() , req.params.id)
             if (req.user.inventory[i]._id.toString() === req.params.id){
                 valid_delete = 1
             }
@@ -83,7 +83,7 @@ router.delete('/products/deleteItem/:id', auth ,async  (req,res)=>{
                 return elem._id.toString() !== req.params.id
             })
             await req.user.save()
-            res.status(200).send(req.user)
+            res.status(200).send(req.params.id)
         } else {
             throw new Error ('Cannot delete item.')
         }

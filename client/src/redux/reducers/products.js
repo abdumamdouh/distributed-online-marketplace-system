@@ -84,11 +84,11 @@ const productsReducer = (state = initialState, action) => {
     case DELETE_PRODUCT:
       return ;
     case DELETE_PRODUCT_SUCCESS:
-    //console.log(action.payload.id)
+  
       return {
         ...state,
         products: state.products.filter(
-          (item) => item._id !== action.payload._id
+          (item) => item._id !== action.payload
         )
         
       };
