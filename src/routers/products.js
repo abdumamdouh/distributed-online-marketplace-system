@@ -8,8 +8,7 @@ const  router = new express.Router()
 
 //(Private) Get all products
 
-router.get('/products', auth, async (req,res) =>{
-
+router.get('/products',  async (req,res) =>{
     try{
         const products = await Product.find({})
         res.send(products)
@@ -20,7 +19,7 @@ router.get('/products', auth, async (req,res) =>{
 
 //(Private) Get product by it's id
 
-router.get('/products/:id',auth ,async (req,res) =>{
+router.get('/products/:id', async (req,res) =>{
     try{
         const product = await Product.findById(req.params.id)
         res.send(product)
