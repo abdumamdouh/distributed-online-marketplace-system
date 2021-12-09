@@ -7,7 +7,7 @@ import { formatPrice } from '../../utils/formatPrice';
 
 import { closeSideCart } from '../../redux/actions/sideBar';
 import { removeFromCart } from '../../redux/actions/products';
-import { purchaseProductAction } from "../../redux/actions/products";
+import { purchaseProductAction } from "../../redux/actions/users";
 
 import cartEmptyImg from '../../assets/images/cart-empty.jpg';
 

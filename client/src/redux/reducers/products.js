@@ -9,9 +9,6 @@ import {
   DELETE_PRODUCT,
   DELETE_PRODUCT_SUCCESS,
   DELETE_PRODUCT_FAIL,
-  PURCHASE_PRODUCT,
-  PURCHASE_PRODUCT_SUCCESS,
-  PURCHASE_PRODUCT_FAIL
 } from "../types";
 
 const initialState = {
@@ -73,12 +70,12 @@ const productsReducer = (state = initialState, action) => {
       return ;
 
     //user purchase product
-    case PURCHASE_PRODUCT:
-      return;
-    case PURCHASE_PRODUCT_SUCCESS:
-      return { product: action.payload };
-    case PURCHASE_PRODUCT_FAIL:
-      return ;
+    // case PURCHASE_PRODUCT:
+    //   return;
+    // case PURCHASE_PRODUCT_SUCCESS:
+    //   return { product: action.payload };
+    // case PURCHASE_PRODUCT_FAIL:
+    //   return ;
 
     //user delete product
     case DELETE_PRODUCT:
