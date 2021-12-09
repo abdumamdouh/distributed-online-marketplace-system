@@ -18,6 +18,7 @@ import {
 
 const URL = 'https://600c30e638fd25001702cf7e.mockapi.io/api/v1/products';
 const serverURL = 'http://localhost:5000'
+
 export const fetchProducts = () => {
   return async (dispatch) => {
     try {
@@ -55,7 +56,7 @@ export const fetchSingleProduct = (id) => {
     }
   };
 };
-//TODO: edit state in reducer
+
 //Add products to the inventory 
 export const addProductAction = (product,token) =>{
   return async (dispatch) => {
@@ -100,15 +101,26 @@ export const purchaseProductAction = (id, token) =>{
 }
 //TODO: check
 //delete product 
-export const deleteProductAction =productId=>{
+export const deleteProductAction =(productId,token)=>{
   return async(dispatch) =>{
     try{
-        dispatch({type: DELETE_PRODUCT})
-        const {data} = await axios.delete(`${serverURL}/products/deleteItem/${productId}`)
+
+        const rawResponse = await fetch(`${serverURL}/products/deleteItem/${productId}`, {
+          method: 'DELETE',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + token
+          }
+        });
+  
+        const data = await rawResponse.json();
+
+        //const {data} = await axios.delete(`${serverURL}/products/deleteItem/${productId}`)
         dispatch ({type: DELETE_PRODUCT_SUCCESS, payload: data})
     }
     catch(error){
-      dispatch({ type: DELETE_PRODUCT_FAIL, payload: error.response&&error.response.data.message })
+     
     }
   }
 
