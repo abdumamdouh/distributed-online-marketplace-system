@@ -1,5 +1,6 @@
 import ContactInfo from "./ContactInfo/ContactInfo";
 import ContactForm from "./ContactForm/ContactForm";
+
 import Title from "../Title/Title";
 import Stores from "../Stores/Stores";
 import Product from "../Product/Product";
@@ -9,13 +10,17 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 const ContactUs = () => {
   const dispatch = useDispatch();
+
   const { products } = useSelector(state => state.products);
   const { userInfo } = useSelector(state => state.user);
+
   const { user } = userInfo;
+
   const handleDelete = (e, id, usertoken) => {
     e.preventDefault();
     dispatch(deleteProductAction(id, usertoken));
   };
+
   return (
     <section className="py-5">
       <div className="container">
@@ -44,7 +49,7 @@ const ContactUs = () => {
                   <button
                     type="button"
                     className="btn btn-primary"
-                    onClick={()=> dispatch(deleteProductAction(product.id))}
+                    onClick={()=> dispatch(deleteProductAction(product._id))}
                   >
                     Delete
                   </button>
@@ -66,9 +71,7 @@ const ContactUs = () => {
                 <button
                   type="button"
                   className="btn btn-primary"
-                  onClick={e => {
-                    handleDelete(e, product.id);
-                  }}
+                  onClick={()=> dispatch(deleteProductAction(product._id))}
                 >
                   Delete
                 </button>
