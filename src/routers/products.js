@@ -27,7 +27,7 @@ router.get('/products/:id', async (req,res) =>{
 }) 
 
 //(Private) Creating new product and adding Product to your inventory
-router.post('/products/addItem' ,  async (req,res) => {
+router.post('/products/addItem' , auth, async (req,res) => {
     try{
         const product = new Product(req.body)
         product.seller = req.user.name
@@ -37,7 +37,7 @@ router.post('/products/addItem' ,  async (req,res) => {
         await req.user.save()
         res.send({user:req.user,product})
     } catch(error) {
-        res.status(400).send()
+        res.status(400).send(error.message)
     }
 })
 
