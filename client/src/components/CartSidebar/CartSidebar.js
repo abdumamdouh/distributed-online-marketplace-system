@@ -51,7 +51,7 @@ const CartSidebar = () => {
         </div>
         <div className="cart-sidebar__content">
 
-          {cart.length > 0 ? (
+          { ( (cart.length) && (cart.length > 0) ) ? (
             cart.map((item) => {
               return (
                 <div key={item._id} className="cart-sidebar__products">
