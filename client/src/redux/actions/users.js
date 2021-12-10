@@ -80,7 +80,7 @@ export const purchaseProductAction = (id, token) =>{
     try {
         
         const rawResponse = await fetch(`${serverURL}/products/purchaseItem/${id}`, {
-          method: 'DELETE',
+          method: 'POST',
           headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',

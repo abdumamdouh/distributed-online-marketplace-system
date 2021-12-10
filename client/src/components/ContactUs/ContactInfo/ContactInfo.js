@@ -2,12 +2,8 @@ import './ContactInfo.scss';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import {getUserAccountAction} from '../../../redux/actions/users'
 const ContactInfo = () =>{
   const dispatch = useDispatch();
-  // useEffect(()=>{
-  //   dispatch(getUserAccountAction())
-  // },[dispatch]);
   const {userInfo} = useSelector(state =>state.user)
   const {user} = userInfo
   console.log(user)
