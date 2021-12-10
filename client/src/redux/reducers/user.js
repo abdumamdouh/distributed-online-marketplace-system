@@ -53,6 +53,7 @@ const userReducer = (state = {}, action) => {
           ...state.userInfo,
           user: {
             ...state.userInfo.user,
+            balance: action.payload.buyer.balance,
             purchasedItems: [...state.userInfo.user.purchasedItems, action.payload.buyer.purchasedItems[action.payload.buyer.purchasedItems.length - 1]]
           }
         }
