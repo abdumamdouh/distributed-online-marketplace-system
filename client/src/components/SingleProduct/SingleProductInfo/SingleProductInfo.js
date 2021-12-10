@@ -7,9 +7,9 @@ import { addToCart } from '../../../redux/actions/products';
 
 import './SingleProductInfo.scss';
 
-const SingleProductInfo = ({ name, brand, price, stars, desription, id }) => {
+const SingleProductInfo = ({ name, brand, price, stars, desription, id, seller }) => {
   const dispatch = useDispatch();
-
+  console.log(id)
   return (
     <>
       <div className="singleProduct">
@@ -17,6 +17,10 @@ const SingleProductInfo = ({ name, brand, price, stars, desription, id }) => {
         <p className="singleProduct__brand">
           {' '}
           <span className="singleProduct__brand--span">BRAND:</span> {brand}
+        </p>
+        <p className="singleProduct__brand">
+          {' '}
+          <span className="singleProduct__brand--span">Seller:</span> {seller}
         </p>
         <h4 className="singleProduct__price">{formatPrice(price)}</h4>
         <Stars stars={stars} />

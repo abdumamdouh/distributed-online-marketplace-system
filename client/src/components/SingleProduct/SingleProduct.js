@@ -28,14 +28,15 @@ const SingleProduct = ({ singleProduct }) => {
   const {
     image,
     gallarey,
-    id,
+    _id,
     name,
     brand,
     price,
     stars,
     desription,
+    seller,
   } = singleProduct;
-
+  console.log('ss', _id)
   return (
     <>
       <section className="py-5">
@@ -43,7 +44,7 @@ const SingleProduct = ({ singleProduct }) => {
           <Title title={name} />
           <div className="row py-5">
             <div className="col-10 col-md-6 mx-auto">
-              <Gallery id={id} image={image} gallarey={gallarey} />
+              <Gallery id={_id} image={image} gallarey={gallarey} />
             </div>
             <div className="col-10 col-md-6 mx-auto">
               <SingleProductInfo
@@ -52,7 +53,8 @@ const SingleProduct = ({ singleProduct }) => {
                 price={price}
                 stars={stars}
                 desription={desription}
-                id={id}
+                id={_id}
+                seller={seller}
               />
             </div>
           </div>
