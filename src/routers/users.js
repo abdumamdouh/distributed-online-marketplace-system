@@ -6,7 +6,7 @@ const router = new express.Router()
 
 
 // (Public) creating a new user (siging-up)
-router.post('/users' , async (req,res) =>{
+router.post('/users', async (req,res) =>{
     const user = new User(req.body)
     try {
         await user.save()
@@ -18,7 +18,7 @@ router.post('/users' , async (req,res) =>{
 })
 
 //(Public) login route
-router.post('/users/login' , async (req,res) =>{
+router.post('/users/login', async (req,res) =>{
     try {
         const user = await User.findByCredetials(req.body.email , req.body.password)
         const token = await user.generateAuthToken()  
@@ -53,7 +53,7 @@ router.post('/users/logout-all' , auth , async (req,res) =>{
 })
 
 //(Private) reading my profile 
-router.get('/users/me', auth , async (req,res) => {
+router.get('/users/me',auth ,async (req,res) => {
     res.status(200).send(req.user.getPublicUser())
 })
 

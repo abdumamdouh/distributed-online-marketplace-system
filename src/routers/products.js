@@ -8,7 +8,9 @@ const  router = new express.Router()
 
 //(Private) Get all products
 
+
 router.get('/products',  async (req,res) =>{
+
     try{
         const products = await Product.find({})
         res.send(products)
@@ -19,7 +21,9 @@ router.get('/products',  async (req,res) =>{
 
 //(Private) Get product by it's id
 
+
 router.get('/products/:id', async (req,res) =>{
+
     try{
         const product = await Product.findById(req.params.id)
         res.send(product)
@@ -32,6 +36,7 @@ router.get('/products/:id', async (req,res) =>{
 router.post('/products/addItem' , auth, async (req,res) => {
     try{
         const product = new Product(req.body)
+        product.gallarey = product.gallarey.concat({url: req.body.image}) 
         product.seller = req.user.name
         await product.save()
 
@@ -91,7 +96,7 @@ router.delete('/products/deleteItem/:id', auth ,async  (req,res)=>{
         }
     } catch (error){
         res.status(404).send(error.message)
-    }
+    }   
 })
 
 module.exports = router
