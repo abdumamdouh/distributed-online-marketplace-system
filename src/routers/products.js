@@ -54,7 +54,7 @@ router.post('/products/purchaseItem/:id' , auth , async (req,res) => {
     try{
         const _id = req.params.id
         const product = await Product.findOne({_id})
-        console.log(req.user.balance)
+        // console.log(req.user.balance)
         if (req.user.balance >= product.price ){
             const seller = await User.findOne({name:product.seller}) 
             seller.balance += product.price
