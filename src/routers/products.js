@@ -8,7 +8,7 @@ const  router = new express.Router()
 
 //(Private) Get all products
 
-router.get('/products', auth, async (req,res) =>{
+router.get('/products', async (req,res) =>{
 
     try{
         const products = await Product.find({})
@@ -20,7 +20,7 @@ router.get('/products', auth, async (req,res) =>{
 
 //(Private) Get product by it's id
 
-router.get('/products/:id',auth ,async (req,res) =>{
+router.get('/products/:id' ,async (req,res) =>{
     try{
         const product = await Product.findById(req.params.id)
         res.send(product)
@@ -33,6 +33,7 @@ router.get('/products/:id',auth ,async (req,res) =>{
 router.post('/products/addItem' , auth, async (req,res) => {
     try{
         const product = new Product(req.body)
+        product.gallarey = product.gallarey.concat({url: req.body.image}) 
         product.seller = req.user.name
         await product.save()
 
@@ -73,7 +74,7 @@ router.delete('/products/deleteItem/:id', auth ,async  (req,res)=>{
     try{
         let valid_delete = 0 
         for (let i = 0 ; i < req.user.inventory.length ; i++){
-            console.log(req.user.inventory[i]._id.toString() , req.params.id)
+            // console.log(req.user.inventory[i]._id.toString() , req.params.id)
             if (req.user.inventory[i]._id.toString() === req.params.id){
                 valid_delete = 1
             }
@@ -90,7 +91,7 @@ router.delete('/products/deleteItem/:id', auth ,async  (req,res)=>{
         }
     } catch (error){
         res.status(404).send(error.message)
-    }
+    }   
 })
 
 module.exports = router
