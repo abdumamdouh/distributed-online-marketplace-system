@@ -25,12 +25,13 @@ const Product = ({ product }) => {
       </Link>
       <div className="product__footer">
         <div className="product__footer-heading">
-          <Link to={`/products/${product.id}`}>
+          <Link to={`/products/${product._id}`}>
             <h3 className="product__footer-title">{product.name}</h3>
+            <h3 className="product__footer-title">Seller: {product.seller}</h3>
           </Link>
           <span className="product__footer-icon">
             <AiOutlineShopping
-              onClick={() => dispatch(addToCart(product.id))}
+              onClick={() => dispatch(addToCart(product._id))}
             />
           </span>
         </div>

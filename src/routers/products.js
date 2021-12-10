@@ -8,7 +8,8 @@ const  router = new express.Router()
 
 //(Private) Get all products
 
-router.get('/products', async (req,res) =>{
+
+router.get('/products',  async (req,res) =>{
 
     try{
         const products = await Product.find({})
@@ -20,7 +21,9 @@ router.get('/products', async (req,res) =>{
 
 //(Private) Get product by it's id
 
-router.get('/products/:id' ,async (req,res) =>{
+
+router.get('/products/:id', async (req,res) =>{
+
     try{
         const product = await Product.findById(req.params.id)
         res.send(product)
@@ -51,9 +54,11 @@ router.post('/products/purchaseItem/:id' , auth , async (req,res) => {
     try{
         const _id = req.params.id
         const product = await Product.findOne({_id})
-        if (req.user.balance > product.price ){
+        console.log(req.user.balance)
+        if (req.user.balance >= product.price ){
             const seller = await User.findOne({name:product.seller}) 
             seller.balance += product.price
+        console.log(seller.balance)
             await seller.save()
             
             req.user.balance -= product.price
@@ -85,7 +90,7 @@ router.delete('/products/deleteItem/:id', auth ,async  (req,res)=>{
                 return elem._id.toString() !== req.params.id
             })
             await req.user.save()
-            res.status(200).send(req.user)
+            res.status(200).send(req.params.id)
         } else {
             throw new Error ('Cannot delete item.')
         }

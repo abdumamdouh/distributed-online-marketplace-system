@@ -9,9 +9,6 @@ import {
   DELETE_PRODUCT,
   DELETE_PRODUCT_SUCCESS,
   DELETE_PRODUCT_FAIL,
-  PURCHASE_PRODUCT,
-  PURCHASE_PRODUCT_SUCCESS,
-  PURCHASE_PRODUCT_FAIL
 } from "../types";
 
 const initialState = {
@@ -33,18 +30,18 @@ const productsReducer = (state = initialState, action) => {
     case ADD_TO_CART:
       // Great Item data from products array
       const item = state.products.find(
-        (product) => product.id === action.payload
+        (product) => product._id === action.payload
       );
       // Check if Item is in cart already
       const inCart = state.cart.find((item) =>
-        item.id === action.payload ? true : false
+        item._id === action.payload ? true : false
       );
 
       return {
         ...state,
         cart: inCart
           ? state.cart.map((item) =>
-              item.id === action.payload ? { ...item, qty: item.qty + 1 } : item
+              item._id === action.payload ? { ...item, qty: item.qty + 1 } : item
             )
           : [...state.cart, { ...item, qty: 1 }]
       };
@@ -52,7 +49,7 @@ const productsReducer = (state = initialState, action) => {
     case REMOVE_FROM_CART:
       return {
         ...state,
-        cart: state.cart.filter((item) => item.id !== action.payload.id)
+        cart: state.cart.filter((item) => item._id !== action.payload)
       };
 
     case FETCH_SINGLE_PRODUCT:
@@ -73,22 +70,22 @@ const productsReducer = (state = initialState, action) => {
       return ;
 
     //user purchase product
-    case PURCHASE_PRODUCT:
-      return;
-    case PURCHASE_PRODUCT_SUCCESS:
-      return { product: action.payload };
-    case PURCHASE_PRODUCT_FAIL:
-      return ;
+    // case PURCHASE_PRODUCT:
+    //   return;
+    // case PURCHASE_PRODUCT_SUCCESS:
+    //   return { product: action.payload };
+    // case PURCHASE_PRODUCT_FAIL:
+    //   return ;
 
     //user delete product
     case DELETE_PRODUCT:
       return ;
     case DELETE_PRODUCT_SUCCESS:
-    //console.log(action.payload.id)
+  
       return {
         ...state,
         products: state.products.filter(
-          (item) => item._id !== action.payload._id
+          (item) => item._id !== action.payload
         )
         
       };

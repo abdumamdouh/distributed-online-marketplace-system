@@ -7,7 +7,7 @@ import { formatPrice } from '../../utils/formatPrice';
 
 import { closeSideCart } from '../../redux/actions/sideBar';
 import { removeFromCart } from '../../redux/actions/products';
-import { purchaseProductAction } from "../../redux/actions/products";
+import { purchaseProductAction } from "../../redux/actions/users";
 
 import cartEmptyImg from '../../assets/images/cart-empty.jpg';
 
@@ -16,6 +16,8 @@ import './CartSidebar.scss';
 const CartSidebar = () => {
   const { cart } = useSelector((state) => state.products);
   const { sideCartOpen } = useSelector((state) => state.sidebar);
+  const {userInfo} = useSelector(state =>state.user)
+ 
   const dispatch = useDispatch();
 
   const [totalPrice, setTotalPrice] = useState(0);
@@ -69,7 +71,7 @@ const CartSidebar = () => {
                       </p>
                       <p className="cart-sidebar__delete">
                         <MdDelete
-                          onClick={() => dispatch(removeFromCart(item.id))}
+                          onClick={() => dispatch(removeFromCart(item._id))}
                         />
                       </p>
                     </div>
@@ -87,16 +89,27 @@ const CartSidebar = () => {
             </div>
           )}
         </div>
+        
+          
         <div className="cart-sidebar__footer">
                     <p>Total: {formatPrice(totalPrice)} </p>
+                    {userInfo &&  
+                    
                     <button
                       type="button"
                       className="btn btn-primary"
-                      onClick={()=> dispatch(purchaseProductAction())}
+                      onClick={()=>  {
+                        const {token} = userInfo
+                        console.log(token)
+                        cart.map(item => dispatch(purchaseProductAction(item._id, token)))
+                        cart.map(item => dispatch(removeFromCart(item._id, token)))                       
+                        }}
                     >
                       Check out
-                    </button>
+                    </button>}
+                   
                   </div>
+        
       </div>
     </div>
   );
